@@ -1,617 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Bristol Boys — End to End</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bristol Boys — Memories</title>
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#020617">
+<style>
+:root{
+  --bg:#050b1a;
+  --card:#101a33;
+  --accent:#5bc0be;
+  --text:#f1f5f9;
+}
 
-  <style>
-    :root{
-      --bg:#020617;
-      --panel:#0b1226;
-      --card:#0f1a33;
-      --text:#f8fafc;
-      --muted:#94a3b8;
-      --accent:#38bdf8;
-      --good:#22c55e;
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --r:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-      background:linear-gradient(180deg,#020617,#050b1a);
-      color:var(--text);
-    }
-    header{
-      position:sticky; top:0; z-index:20;
-      padding:16px 16px 12px;
-      background:rgba(2,6,23,.78);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(148,163,184,.12);
-    }
-    .title{
-      font-weight:800; font-size:18px; letter-spacing:.2px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-    }
-    .pill{
-      font-size:12px; color:var(--muted);
-      padding:6px 10px;
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:999px;
-    }
-    .search{
-      margin-top:10px;
-      display:flex; gap:10px;
-    }
-    .search input{
-      width:100%;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(148,163,184,.16);
-      background:rgba(15,23,42,.6);
-      color:var(--text);
-      outline:none;
-    }
+*{box-sizing:border-box}
 
-    main{ padding:14px 14px 92px; }
-    section{ display:none; }
-    section.active{ display:block; }
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+  background:linear-gradient(180deg,#020617,#020617,#050b1a);
+  color:var(--text);
+}
 
-    .hero{
-      border-radius:22px;
-      overflow:hidden;
-      background:#000;
-      box-shadow:var(--shadow);
-      margin-bottom:14px;
-      position:relative;
-    }
-    .hero img{
-      width:100%; height:240px; object-fit:cover;
-      display:block;
-      opacity:.92;
-    }
-    .hero .overlay{
-      position:absolute; inset:0;
-      background:linear-gradient(180deg,transparent 35%, rgba(0,0,0,.75));
-      display:flex; align-items:flex-end;
-      padding:14px;
-    }
-    .hero h1{
-      margin:0;
-      font-size:20px;
-      line-height:1.2;
-    }
-    .hero p{
-      margin:6px 0 0;
-      color:rgba(248,250,252,.78);
-      font-size:13px;
-    }
+header{
+  padding:18px;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  background:linear-gradient(135deg,#020617,#101a33);
+}
 
-    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .card{
-      background:linear-gradient(180deg, rgba(15,26,51,.95), rgba(2,6,23,.85));
-      border:1px solid rgba(148,163,184,.12);
-      border-radius:var(--r);
-      padding:14px;
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-    }
-    .card h2{ margin:0 0 6px; font-size:15px; }
-    .card p{ margin:0; color:var(--muted); line-height:1.45; font-size:13px; }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;
+  padding:16px;
+}
 
-    .actions{
-      display:grid; grid-template-columns:1fr 1fr; gap:12px;
-      margin:14px 0;
-    }
-    .action{
-      border-radius:18px;
-      padding:14px;
-      background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(15,26,51,.92));
-      border:1px solid rgba(56,189,248,.25);
-      box-shadow:var(--shadow);
-      cursor:pointer;
-      user-select:none;
-    }
-    .action strong{ display:block; font-size:14px; }
-    .action span{ color:var(--muted); font-size:12px; }
+.card{
+  background:var(--card);
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:1/1;
+  cursor:pointer;
+}
 
-    /* Timeline */
-    .day{
-      margin-bottom:12px;
-      overflow:hidden;
-      border-radius:18px;
-      border:1px solid rgba(148,163,184,.14);
-      background:rgba(15,26,51,.65);
-    }
-    .day button{
-      width:100%;
-      padding:14px;
-      background:none;
-      border:none;
-      color:var(--text);
-      text-align:left;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      font-size:14px;
-      cursor:pointer;
-    }
-    .day button .meta{ color:var(--muted); font-size:12px; }
-    .day .content{
-      display:none;
-      padding:0 14px 14px;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:13px;
-    }
-    .day.open .content{ display:block; }
-    .miniRow{
-      display:flex; gap:10px; overflow:auto; padding-top:10px;
-      scroll-snap-type:x mandatory;
-    }
-    .miniRow img{
-      height:140px; width:auto;
-      border-radius:14px;
-      scroll-snap-align:center;
-      border:1px solid rgba(148,163,184,.14);
-      background:#000;
-    }
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    /* Photos */
-    .photoGrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-      margin-top:12px;
-    }
-    .photoGrid .ph{
-      border-radius:16px;
-      overflow:hidden;
-      background:#000;
-      border:1px solid rgba(148,163,184,.12);
-      position:relative;
-    }
-    .photoGrid img{
-      width:100%;
-      height:170px;
-      object-fit:cover;
-      display:block;
-      opacity:.95;
-    }
-    .tag{
-      position:absolute; left:10px; bottom:10px;
-      background:rgba(0,0,0,.55);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:11px;
-      color:#fff;
-      max-width:85%;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+.viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:100;
+}
 
-    /* Stories */
-    .story{
-      border-radius:18px;
-      padding:14px;
-      background:linear-gradient(135deg, rgba(34,197,94,.12), rgba(15,26,51,.92));
-      border:1px solid rgba(34,197,94,.18);
-      margin-bottom:12px;
-    }
-    .story h3{ margin:0 0 6px; font-size:15px; }
-    .story .by{ color:var(--muted); font-size:12px; margin-bottom:10px; }
-    .story .text{ color:var(--text); opacity:.9; line-height:1.5; font-size:13px; }
-    .story img{ width:100%; border-radius:14px; margin-top:10px; border:1px solid rgba(148,163,184,.12); background:#000; }
+.viewer img{
+  max-width:95%;
+  max-height:80%;
+  border-radius:12px;
+}
 
-    /* Viewer */
-    #viewer{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.94);
-      display:none;
-      z-index:999;
-      touch-action:pan-y;
-    }
-    #viewer.active{ display:block; }
-    #viewer .top{
-      position:absolute; left:0; right:0; top:0;
-      padding:14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      background:linear-gradient(180deg, rgba(0,0,0,.65), transparent);
-    }
-    #viewer .btn{
-      border:none;
-      background:rgba(255,255,255,.08);
-      color:#fff;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
-    }
-    #viewer img{
-      position:absolute; left:0; right:0; top:0; bottom:0;
-      margin:auto;
-      max-width:100%;
-      max-height:82%;
-      border-radius:16px;
-    }
-    #viewer .cap{
-      position:absolute; left:0; right:0; bottom:18px;
-      margin:auto;
-      width:92%;
-      text-align:center;
-      color:rgba(248,250,252,.9);
-      font-size:13px;
-      padding:10px 12px;
-      border-radius:14px;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(148,163,184,.16);
-    }
-    #viewer .hint{
-      position:absolute; left:0; right:0; bottom:66px;
-      margin:auto;
-      width:92%;
-      text-align:center;
-      color:rgba(148,163,184,.95);
-      font-size:12px;
-      opacity:.9;
-    }
+.caption{
+  margin-top:12px;
+  color:#cbd5e1;
+  font-size:14px;
+}
 
-    /* Bottom Nav */
-    nav{
-      position:fixed; left:0; right:0; bottom:0;
-      padding:10px 10px 18px;
-      background:rgba(2,6,23,.82);
-      backdrop-filter: blur(10px);
-      border-top:1px solid rgba(148,163,184,.12);
-      display:flex; gap:8px;
-      z-index:30;
-    }
-    nav button{
-      flex:1;
-      border:none;
-      background:rgba(255,255,255,.06);
-      color:rgba(148,163,184,.95);
-      padding:12px 10px;
-      border-radius:16px;
-      font-size:12px;
-      font-weight:700;
-    }
-    nav button.active{
-      color:#001018;
-      background:linear-gradient(135deg, rgba(56,189,248,.95), rgba(91,192,190,.9));
-    }
-    a.link{ color:var(--accent); text-decoration:none; font-weight:700; }
-  </style>
+.nav{
+  position:absolute;
+  top:50%;
+  font-size:40px;
+  color:white;
+  padding:20px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.prev{left:0}
+.next{right:0}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:30px;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
-<header>
-  <div class="title">
-    <div>Bristol Boys — End to End</div>
-    <div class="pill" id="statusPill">Loading…</div>
-  </div>
-  <div class="search">
-    <input id="q" placeholder="Search days, places, captions, riders…" autocomplete="off">
-  </div>
-</header>
 
-<main>
-  <section id="home" class="active">
-    <div class="hero" id="hero">
-      <img id="heroImg" alt="Bristol Boys hero" src="photos/hero.jpg">
-      <div class="overlay">
-        <div>
-          <h1>Ride memories, stories & photos — all in one place</h1>
-          <p>Tap around. Swipe photos. Expand days. Share with the lads.</p>
-        </div>
-      </div>
-    </div>
+<header>Bristol Boys — Memories</header>
 
-    <div class="actions">
-      <div class="action" onclick="go('timeline')">
-        <strong>🗓 Timeline</strong>
-        <span>Expandable day-by-day ride diary</span>
-      </div>
-      <div class="action" onclick="go('photos')">
-        <strong>📸 Memories</strong>
-        <span>Tap + swipe gallery with captions</span>
-      </div>
-      <div class="action" onclick="go('stories')">
-        <strong>📖 Stories from riders</strong>
-        <span>Personal stories & quotes</span>
-      </div>
-      <div class="action" onclick="go('share')">
-        <strong>🔗 Share & add</strong>
-        <span>Links for friends to contribute</span>
-      </div>
-    </div>
+<div class="grid" id="grid"></div>
 
-    <div class="grid2">
-      <div class="card">
-        <h2>How to use</h2>
-        <p>
-          • Tap a day to expand.<br>
-          • Tap a photo to open fullscreen.<br>
-          • Swipe left/right in fullscreen.<br>
-          • Long-press a photo to reveal the caption.
-        </p>
-      </div>
-      <div class="card">
-        <h2>Quick links</h2>
-        <p>
-          • Route research: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/John_o%27_Groats">John o’ Groats</a><br>
-          • Finish line: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Land%27s_End,_Cornwall">Land’s End</a><br>
-          • Add photos: see “Share & add”
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="timeline"></section>
-  <section id="stories"></section>
-  <section id="photos"></section>
-
-  <section id="share">
-    <div class="card">
-      <h2>Share & Add Photos</h2>
-      <p>
-        This is the family archive. You can ask friends to send photos/stories via:
-        WhatsApp, iMessage, Facebook, Instagram, or email — then you upload them into <strong>/photos</strong>.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Social links (tap)</h2>
-      <p>
-        • WhatsApp: <a class="link" target="_blank" rel="noopener" href="https://wa.me/?text=Bristol%20Boys%20End%20to%20End%20memories%20%E2%9A%A1%20Send%20photos%20and%20stories!">Send invite message</a><br>
-        • Facebook: <a class="link" target="_blank" rel="noopener" href="https://www.facebook.com/">Open Facebook</a><br>
-        • Instagram: <a class="link" target="_blank" rel="noopener" href="https://www.instagram.com/">Open Instagram</a><br>
-        • X: <a class="link" target="_blank" rel="noopener" href="https://x.com/">Open X</a><br>
-        • Email: <a class="link" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20Photos%20%26%20Stories&body=Send%20photos%2C%20captions%2C%20routes%2C%20and%20any%20memories%20you%20want%20added%20to%20the%20Bristol%20Boys%20app.">Email Jeremy</a>
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Home Screen install</h2>
-      <p>
-        Open the site in Safari → Share → <strong>Add to Home Screen</strong>.
-      </p>
-    </div>
-  </section>
-</main>
-
-<nav>
-  <button class="active" onclick="go('home', this)">🏠 Home</button>
-  <button onclick="go('timeline', this)">🗓 Timeline</button>
-  <button onclick="go('stories', this)">📖 Stories</button>
-  <button onclick="go('photos', this)">📸 Photos</button>
-  <button onclick="go('share', this)">🔗 Share</button>
-</nav>
-
-<!-- Fullscreen viewer -->
-<div id="viewer" aria-hidden="true">
-  <div class="top">
-    <button class="btn" onclick="closeViewer()">✕ Close</button>
-    <button class="btn" onclick="shareCurrent()">Share</button>
-  </div>
-  <img id="viewerImg" alt="">
-  <div class="hint">Swipe left/right • Long-press for caption</div>
-  <div class="cap" id="viewerCap"></div>
+<div class="viewer" id="viewer">
+  <div class="nav prev" onclick="move(-1)">‹</div>
+  <img id="viewerImg">
+  <div class="nav next" onclick="move(1)">›</div>
+  <div class="caption" id="caption"></div>
+  <div class="close" onclick="closeViewer()">✕</div>
 </div>
 
 <script>
-  // ----- State -----
-  let PHOTOS = [];   // [{src, caption, day, place}]
-  let TIMELINE = []; // [{dayTitle, dateLabel, route, notes, placeLinks:[{label,url}], photoRefs:[src]}]
-  let STORIES = [];  // [{title, rider, text, photo}]
-  let currentIdx = 0;
+let photos=[];
+let current=0;
 
-  const $ = (s)=>document.querySelector(s);
-
-  function setStatus(msg){ $("#statusPill").textContent = msg; }
-
-  function go(id, btn){
-    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-    if(btn) btn.classList.add("active");
-    // keep nav highlight if called from tiles
-    if(!btn){
-      const map = {home:0,timeline:1,stories:2,photos:3,share:4};
-      const i = map[id] ?? 0;
-      document.querySelectorAll("nav button")[i].classList.add("active");
-    }
-    window.scrollTo({top:0, behavior:"smooth"});
-  }
-
-  // ----- Rendering -----
-  function renderTimeline(filter=""){
-    const root = document.getElementById("timeline");
-    const items = TIMELINE.filter(d => JSON.stringify(d).toLowerCase().includes(filter));
-    root.innerHTML = `
-      <div class="card">
-        <h2>Timeline</h2>
-        <p>Tap a day to expand. Photos and links live inside each day.</p>
-      </div>
-      ${items.map((d,idx)=>`
-        <div class="day" data-idx="${idx}">
-          <button onclick="toggleDay(this)">
-            <div>
-              <div><strong>${escapeHTML(d.dayTitle)}</strong></div>
-              <div class="meta">${escapeHTML(d.dateLabel || "")}${d.route ? " • " + escapeHTML(d.route) : ""}</div>
-            </div>
-            <div style="color:var(--muted);font-weight:900">▾</div>
-          </button>
-          <div class="content">
-            ${d.notes ? `<div>${escapeHTML(d.notes)}</div>` : ""}
-            ${Array.isArray(d.placeLinks) && d.placeLinks.length ? `
-              <div style="margin-top:10px">
-                <strong style="color:var(--text)">Links:</strong><br>
-                ${d.placeLinks.map(l=>`<a class="link" target="_blank" rel="noopener" href="${l.url}">${escapeHTML(l.label)}</a>`).join(" • ")}
-              </div>` : ""
-            }
-            ${Array.isArray(d.photoRefs) && d.photoRefs.length ? `
-              <div class="miniRow">
-                ${d.photoRefs.map(src=>`<img loading="lazy" src="${src}" alt="" onclick="openViewerBySrc('${src.replace(/'/g,"\\'")}')">`).join("")}
-              </div>` : ""
-            }
-          </div>
-        </div>
-      `).join("")}
-    `;
-  }
-
-  function toggleDay(btn){
-    btn.closest(".day").classList.toggle("open");
-  }
-
-  function renderStories(filter=""){
-    const root = document.getElementById("stories");
-    const items = STORIES.filter(s => JSON.stringify(s).toLowerCase().includes(filter));
-    root.innerHTML = `
-      <div class="card">
-        <h2>Stories from riders</h2>
-        <p>Tap around. This is where the heart of it lives.</p>
-      </div>
-      ${items.map(s=>`
-        <div class="story">
-          <h3>${escapeHTML(s.title || "Story")}</h3>
-          <div class="by">${escapeHTML(s.rider || "")}</div>
-          <div class="text">${escapeHTML(s.text || "")}</div>
-          ${s.photo ? `<img loading="lazy" src="${s.photo}" alt="" onclick="openViewerBySrc('${s.photo.replace(/'/g,"\\'")}')">` : ""}
-        </div>
-      `).join("")}
-    `;
-  }
-
-  function renderPhotos(filter=""){
-    const root = document.getElementById("photos");
-    const items = PHOTOS.filter(p => JSON.stringify(p).toLowerCase().includes(filter));
-    root.innerHTML = `
-      <div class="card">
-        <h2>Memories</h2>
-        <p>Tap a photo to open fullscreen. Swipe left/right. Long-press shows captions.</p>
-      </div>
-      <div class="photoGrid">
-        ${items.map((p,i)=>`
-          <div class="ph" onpointerdown="pressStart(${i})" onpointerup="pressEnd()" onpointerleave="pressEnd()">
-            <img loading="lazy" src="${p.src}" alt="" onclick="openViewer(${i})">
-            <div class="tag">${escapeHTML(p.caption || "Tap to open")}</div>
-          </div>
-        `).join("")}
-      </div>
-    `;
-  }
-
-  function escapeHTML(str){
-    return String(str).replace(/[&<>"']/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
-  }
-
-  // ----- Viewer (tap + swipe + long-press caption) -----
-  let pressTimer=null;
-  function openViewer(i){
-    currentIdx = i;
-    const p = PHOTOS[currentIdx];
-    $("#viewerImg").src = p.src;
-    $("#viewerCap").textContent = p.caption || "";
-    $("#viewer").classList.add("active");
-    $("#viewer").setAttribute("aria-hidden","false");
-  }
-  function openViewerBySrc(src){
-    const i = PHOTOS.findIndex(p=>p.src===src);
-    if(i>=0) openViewer(i);
-    else{
-      // If photo is referenced from timeline/stories but not in PHOTOS list, open anyway:
-      $("#viewerImg").src = src;
-      $("#viewerCap").textContent = "";
-      $("#viewer").classList.add("active");
-    }
-  }
-  function closeViewer(){
-    $("#viewer").classList.remove("active");
-    $("#viewer").setAttribute("aria-hidden","true");
-  }
-
-  let startX=0;
-  $("#viewer").addEventListener("touchstart",(e)=>{ startX=e.touches[0].clientX; }, {passive:true});
-  $("#viewer").addEventListener("touchend",(e)=>{
-    const dx = e.changedTouches[0].clientX - startX;
-    if(Math.abs(dx) < 40) return;
-    if(!PHOTOS.length) return;
-    if(dx < 0) currentIdx = (currentIdx + 1) % PHOTOS.length;
-    else currentIdx = (currentIdx - 1 + PHOTOS.length) % PHOTOS.length;
-    const p = PHOTOS[currentIdx];
-    $("#viewerImg").src = p.src;
-    $("#viewerCap").textContent = p.caption || "";
-  }, {passive:true});
-
-  function pressStart(i){
-    clearTimeout(pressTimer);
-    pressTimer = setTimeout(()=>{
-      const p = PHOTOS[i];
-      alert(p.caption || "No caption yet");
-    }, 550);
-  }
-  function pressEnd(){
-    clearTimeout(pressTimer);
-  }
-
-  async function shareCurrent(){
-    const src = $("#viewerImg").src;
-    try{
-      if(navigator.share){
-        await navigator.share({ title:"Bristol Boys — Memory", text: $("#viewerCap").textContent || "Bristol Boys memory", url: src });
-      }else{
-        prompt("Copy this link:", src);
-      }
-    }catch(e){}
-  }
-
-  // ----- Load data -----
-  async function loadAll(){
-    setStatus("Loading…");
-    // photos.json is the “truth” — add to it as you upload photos.
-    const [photos, timeline, stories] = await Promise.all([
-      fetch("photos.json", {cache:"no-store"}).then(r=>r.json()).catch(()=>[]),
-      fetch("timeline.json", {cache:"no-store"}).then(r=>r.json()).catch(()=>[]),
-      fetch("stories.json", {cache:"no-store"}).then(r=>r.json()).catch(()=>[]),
-    ]);
-
-    PHOTOS = Array.isArray(photos) ? photos : [];
-    TIMELINE = Array.isArray(timeline) ? timeline : [];
-    STORIES = Array.isArray(stories) ? stories : [];
-
-    setStatus(`Loaded • ${PHOTOS.length} photos`);
-    // Hero image fallback
-    if(PHOTOS.length && $("#heroImg").getAttribute("src")==="photos/hero.jpg"){
-      $("#heroImg").src = PHOTOS[0].src;
-    }
-
-    renderTimeline($("#q").value.trim().toLowerCase());
-    renderStories($("#q").value.trim().toLowerCase());
-    renderPhotos($("#q").value.trim().toLowerCase());
-  }
-
-  $("#q").addEventListener("input", ()=>{
-    const f = $("#q").value.trim().toLowerCase();
-    renderTimeline(f); renderStories(f); renderPhotos(f);
+fetch('photos.json')
+  .then(r=>r.json())
+  .then(data=>{
+    photos=data;
+    const grid=document.getElementById('grid');
+    data.forEach((p,i)=>{
+      const d=document.createElement('div');
+      d.className='card';
+      d.innerHTML=`<img src="${p.src}">`;
+      d.onclick=()=>openViewer(i);
+      grid.appendChild(d);
+    });
   });
 
-  // Service worker for offline feel
-  if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("sw.js").catch(()=>{});
-  }
+function openViewer(i){
+  current=i;
+  document.getElementById('viewer').style.display='flex';
+  update();
+}
 
-  loadAll();
+function closeViewer(){
+  document.getElementById('viewer').style.display='none';
+}
+
+function move(dir){
+  current=(current+dir+photos.length)%photos.length;
+  update();
+}
+
+function update(){
+  document.getElementById('viewerImg').src=photos[current].src;
+  document.getElementById('caption').textContent=photos[current].caption;
+}
 </script>
+
 </body>
 </html>
