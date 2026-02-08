@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bristol Boys – End to End 2012</title>
+
+<style>
+:root{
+  --bg:#0b132b;
+  --card:#1c2541;
+  --accent:#5bc0be;
+  --text:#ffffff;
+  --muted:#cbd5e1;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+header{
+  padding:18px;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  background:linear-gradient(135deg,#1c2541,#0b132b);
+}
+main{
+  padding:16px;
+  padding-bottom:110px;
+}
+section{display:none}
+section.active{display:block}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+}
+.card h2{margin:0 0 10px}
+.card p{margin:0;line-height:1.6;color:var(--muted)}
+img{
+  width:100%;
+  margin-top:12px;
+  border-radius:14px;
+}
+nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#070c1a;
+  display:flex;
+  justify-content:space-around;
+  padding:14px 0;
+}
+nav button{
+  background:none;
+  border:none;
+  color:var(--muted);
+  font-size:13px;
+}
+nav button span{
+  display:block;
+  font-size:22px;
+  margin-bottom:4px;
+}
+nav button.active{
+  color:var(--accent);
+  font-weight:600;
+}
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+.viewer img{
+  max-width:100%;
+  max-height:90%;
+  border-radius:14px;
+}
+.viewer button{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:none;
+  border:none;
+  color:white;
+  font-size:28px;
+}
+button{cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<header>Bristol Boys — End to End 2012</header>
+
+<main>
+
+<section id="home" class="active">
+  <div class="card">
+    <h2>The Ride</h2>
+    <p>
+      John o’ Groats to Land’s End. Over a thousand miles.
+      Grit, friendship, weather, and memories.
+    </p>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="card">
+    <h2>Day 1 — John o’ Groats</h2>
+    <p>The journey begins.</p>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="card">
+    <h2>Stories</h2>
+    <p>This space will grow with memories from riders and friends.</p>
+  </div>
+</section>
+
+<section id="photos">
+  <div class="card">
+    <h2>Memories</h2>
+    <p>Tap a photo. Swipe left or right.</p>
+  </div>
+  <div class="photo-grid" id="photoGrid"></div>
+</section>
+
+</main>
+
+<div class="viewer" id="viewer">
+  <img id="viewerImg">
+  <button onclick="closeViewer()">✕</button>
+</div>
+
+<nav>
+  <button class="active" onclick="go('home',this)"><span>🏠</span>Home</button>
+  <button onclick="go('timeline',this)"><span>🗓</span>Timeline</button>
+  <button onclick="go('stories',this)"><span>📖</span>Stories</button>
+  <button onclick="go('photos',this)"><span>📸</span>Photos</button>
+</nav>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+const photos=[
+  "photos/day1.jpg",
+  "photos/day2.jpg",
+  "photos/group.jpg"
+];
+
+const grid=document.getElementById("photoGrid");
+const viewer=document.getElementById("viewer");
+const viewerImg=document.getElementById("viewerImg");
+let current=0;
+
+photos.forEach((src,i)=>{
+  const img=document.createElement("img");
+  img.src=src;
+  img.onclick=()=>openViewer(i);
+  grid.appendChild(img);
+});
+
+function openViewer(i){
+  current=i;
+  viewerImg.src=photos[current];
+  viewer.style.display="flex";
+}
+function closeViewer(){
+  viewer.style.display="none";
+}
+let startX=0;
+viewer.addEventListener("touchstart",e=>{
+  startX=e.touches[0].clientX;
+});
+viewer.addEventListener("touchend",e=>{
+  let endX=e.changedTouches[0].clientX;
+  if(endX<startX-50) next();
+  if(endX>startX+50) prev();
+});
+function next(){
+  current=(current+1)%photos.length;
+  viewerImg.src=photos[current];
+}
+function prev(){
+  current=(current-1+photos.length)%photos.length;
+  viewerImg.src=photos[current];
+}
+</script>
+
+</body>
+</html>
