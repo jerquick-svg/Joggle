@@ -1,199 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bristol Boys — End to End</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Super Jerrys – End to End Ride</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b1320;
+  --card: #121b2f;
+  --accent: #4fd1c5;
+  --text: #e6edf3;
+  --muted: #9fb3c8;
+}
 
-  <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --accent: #22c55e;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-    }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(180deg, #060b16, #0b1320);
+  color: var(--text);
+}
 
-    * { box-sizing: border-box; }
+header {
+  padding: 1.2rem;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+header p {
+  color: var(--muted);
+  margin-top: .3rem;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+.actions {
+  display: flex;
+  gap: .6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: .8rem;
+}
+.actions a {
+  text-decoration: none;
+  padding: .5rem .8rem;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--accent);
+  font-size: .9rem;
+  border: 1px solid #1e2a46;
+}
 
-    header {
-      padding: 1.2rem;
-      text-align: center;
-      background: linear-gradient(135deg, #020617, #0f172a);
-      border-bottom: 1px solid #1f2933;
-    }
+.timeline {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 3rem;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 1.6rem;
-      font-weight: 800;
-    }
+.day {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #1e2a46;
+}
 
-    header p {
-      margin: 0.3rem 0 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.day h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.day small {
+  color: var(--muted);
+}
 
-    nav {
-      display: flex;
-      justify-content: space-around;
-      background: var(--panel);
-      border-top: 1px solid #1f2933;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: .5rem;
+  margin-top: .8rem;
+}
+.photos img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
-    nav button {
-      flex: 1;
-      padding: 0.8rem 0;
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 0.75rem;
-    }
+.notes {
+  margin-top: .6rem;
+  color: #d0dae6;
+  font-size: .95rem;
+}
 
-    nav button.active {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    main {
-      padding: 1rem;
-      padding-bottom: 4rem;
-    }
-
-    section {
-      display: none;
-      animation: fade 0.3s ease;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    .card {
-      background: var(--panel);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #1f2933;
-    }
-
-    .card h2 {
-      margin-top: 0;
-      font-size: 1.1rem;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🚴 Bristol Boys</h1>
-    <p>End to End Challenge</p>
-  </header>
+<header>
+  <h1>🚴 Super Jerrys – End to End</h1>
+  <p>Land’s End to John O’Groats • The full story</p>
 
-  <main>
+  <div class="actions">
+    <a href="mailto:jerquick@icloud.com">📧 Email Photos</a>
+    <a href="#">📸 Upload Drop</a>
+    <a href="#">🌍 Route Map</a>
+    <a href="#">📱 Share</a>
+  </div>
+</header>
 
-    <!-- HOME -->
-    <section id="home" class="active">
-      <div class="card">
-        <h2>Welcome</h2>
-        <p class="muted">
-          John O’Groats to Land’s End.  
-          Miles, memories, graft, and chaos.
-        </p>
-      </div>
+<div class="timeline" id="timeline"></div>
 
-      <div class="card">
-        <h2>Quick Stats</h2>
-        <p>📍 Route: UK End to End</p>
-        <p>📆 Year: 2012 / 2013</p>
-        <p>👥 Riders: Bristol Boys</p>
-      </div>
-    </section>
+<footer>
+  Built for the ride. Built to last. 💙
+</footer>
 
-    <!-- TIMELINE -->
-    <section id="timeline">
-      <div class="card">
-        <h2>Timeline</h2>
-        <p class="muted">
-          Day-by-day ride log, stories, graft levels, and moments that hurt.
-        </p>
-      </div>
-    </section>
+<script>
+/* ===== TIMELINE DATA (edit this only) ===== */
+const timelineData = [
+  {
+    day: "Day 1",
+    date: "Start Day",
+    title: "Land’s End → Bodmin",
+    notes: "Nerves. Fresh legs. Big smiles. Wind at our backs.",
+    photos: [
+      "photos/day1-1.jpg",
+      "photos/day1-2.jpg"
+    ]
+  },
+  {
+    day: "Day 2",
+    date: "Into Devon",
+    title: "Rolling Hills",
+    notes: "Reality kicks in. Legs wake up. Team gels.",
+    photos: []
+  },
+  {
+    day: "Hardest Day",
+    date: "Arran → Gretna",
+    title: "Grit Required",
+    notes: "Headwinds. Long miles. Proper test of character.",
+    photos: []
+  }
+];
 
-    <!-- PHOTOS -->
-    <section id="photos">
-      <div class="card">
-        <h2>Photos</h2>
-        <p class="muted">
-          Ride shots, pubs, pain faces, and finish-line relief.
-        </p>
-      </div>
-    </section>
+/* ===== RENDER ===== */
+const timeline = document.getElementById("timeline");
 
-    <!-- MAP -->
-    <section id="map">
-      <div class="card">
-        <h2>Route Map</h2>
-        <p class="muted">
-          Visual route tracking and daily stages.
-        </p>
-      </div>
-    </section>
+timelineData.forEach(d => {
+  const el = document.createElement("div");
+  el.className = "day";
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="card">
-        <h2>About the Ride</h2>
-        <p class="muted">
-          Why we did it, who we rode for, and what it meant.
-        </p>
-      </div>
-    </section>
+  el.innerHTML = `
+    <h2>${d.day} — ${d.title}</h2>
+    <small>${d.date}</small>
+    <div class="notes">${d.notes}</div>
+    <div class="photos">
+      ${d.photos.map(p => `<img src="${p}" loading="lazy">`).join("")}
+    </div>
+  `;
 
-  </main>
-
-  <nav>
-    <button class="active" onclick="show('home', this)">Home</button>
-    <button onclick="show('timeline', this)">Timeline</button>
-    <button onclick="show('photos', this)">Photos</button>
-    <button onclick="show('map', this)">Map</button>
-    <button onclick="show('about', this)">About</button>
-  </nav>
-
-  <script>
-    function show(id, el) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
-    }
-  </script>
+  timeline.appendChild(el);
+});
+</script>
 
 </body>
 </html>
