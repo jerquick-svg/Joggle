@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>JOGGLE – Bristol Boys</title>
+
+<!-- iPhone app mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="JOGGLE">
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#0d1b2a;
+  color:white;
+}
+header{
+  padding:20px;
+  text-align:center;
+  font-size:22px;
+  background:#1b263b;
+}
+section{
+  padding:20px;
+}
+button{
+  width:100%;
+  padding:16px;
+  margin:10px 0;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>JOGGLE — Bristol Boys</header>
+
+<section>
+  <p>If you can read this, the JOGGLE app is LIVE.</p>
+
+  <button>Timeline</button>
+  <button>Stories</button>
+  <button>Photos</button>
+</section>
+
+</body>
+</html>
