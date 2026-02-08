@@ -1,19 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bristol Boys — End to End 2012</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bristol Boys — Memories</title>
+
+<style>
+:root{
+  --bg:#020617;
+  --card:#0f172a;
+  --accent:#38bdf8;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI";
+  background:var(--bg);
+  color:var(--text);
+}
+header{
+  padding:18px;
+  text-align:center;
+  font-weight:700;
+  background:linear-gradient(135deg,#020617,#0f172a);
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:12px;
+  padding:16px;
+}
+.thumb{
+  aspect-ratio:1/1;
+  background:var(--card);
+  border-radius:14px;
+  overflow:hidden;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.viewer{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+.viewer.active{display:flex}
+.viewer img{
+  max-width:100%;
+  max-height:100%;
+}
+.caption{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.6);
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:14px;
+  color:white;
+}
+.close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:22px;
+  color:white;
+}
+</style>
 </head>
-<body style="background:#0b1b2a;color:white;font-family:-apple-system,Arial;text-align:center;padding:40px">
 
-  <h1>Bristol Boys — End to End 2012</h1>
-  <p>John o’ Groats to Land’s End</p>
+<body>
 
-  <p style="opacity:.7;margin-top:40px">
-    App loading correctly ✔️<br>
-    Next step: full timeline, stories & photos
-  </p>
+<header>Bristol Boys — Memories</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="viewer" id="viewer">
+  <span class="close" onclick="closeViewer()">✕</span>
+  <img id="full">
+  <div class="caption" id="caption"></div>
+</div>
+
+<script>
+const photos=[
+  {src:"photos/day1-start.jpg",caption:"Day 1 — John o’ Groats"},
+  {src:"photos/map-route.jpg",caption:"The long road south"},
+  {src:"photos/group-shot.jpg",caption:"The lads"}
+];
+
+const grid=document.getElementById("grid");
+const viewer=document.getElementById("viewer");
+const full=document.getElementById("full");
+const caption=document.getElementById("caption");
+
+let index=0,startX=0;
+
+photos.forEach((p,i)=>{
+  const d=document.createElement("div");
+  d.className="thumb";
+  d.innerHTML=`<img src="${p.src}">`;
+  d.onclick=()=>openViewer(i);
+  grid.appendChild(d);
+});
+
+function openViewer(i){
+  index=i;
+  update();
+  viewer.classList.add("active");
+}
+function closeViewer(){
+  viewer.classList.remove("active");
+}
+function update(){
+  full.src=photos[index].src;
+  caption.textContent=photos[index].caption;
+}
+
+viewer.addEventListener("touchstart",e=>{
+  startX=e.touches[0].clientX;
+});
+viewer.addEventListener("touchend",e=>{
+  let dx=e.changedTouches[0].clientX-startX;
+  if(dx>50 && index>0){index--;update();}
+  if(dx<-50 && index<photos.length-1){index++;update();}
+});
+</script>
 
 </body>
 </html>
