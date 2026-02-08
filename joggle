@@ -2,52 +2,125 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>JOGGLE – Bristol Boys</title>
-
-<!-- iPhone app mode -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="JOGGLE">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bristol Boys — End to End 2012</title>
 
 <style>
+:root{
+  --bg:#050b1a;
+  --card:#101a33;
+  --accent:#5bc0be;
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+}
+
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#0d1b2a;
-  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:linear-gradient(180deg,#020617,#020617,#050b1a);
+  color:var(--text);
 }
+
+/* HEADER */
 header{
   padding:20px;
   text-align:center;
-  font-size:22px;
-  background:#1b263b;
+  font-size:20px;
+  font-weight:700;
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(10px);
 }
+
+/* SECTIONS */
 section{
-  padding:20px;
-}
-button{
-  width:100%;
+  display:none;
   padding:16px;
-  margin:10px 0;
-  font-size:16px;
-  border:none;
-  border-radius:10px;
+  padding-bottom:90px;
 }
-</style>
-</head>
+section.active{display:block}
 
-<body>
+.card{
+  background:linear-gradient(180deg,#0f172a,#020617);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
 
-<header>JOGGLE — Bristol Boys</header>
+.hero{
+  background:url("photos/day1-start.jpg") center/cover;
+  height:220px;
+  border-radius:22px;
+  margin-bottom:18px;
+}
 
-<section>
-  <p>If you can read this, the JOGGLE app is LIVE.</p>
+h2{margin:0 0 10px 0}
+p{color:var(--muted);line-height:1.5}
 
-  <button>Timeline</button>
-  <button>Stories</button>
-  <button>Photos</button>
-</section>
+/* TIMELINE */
+.timeline-day{
+  cursor:pointer;
+}
+.timeline-content{
+  display:none;
+  margin-top:14px;
+}
+.timeline-day.open .timeline-content{
+  display:block;
+}
 
-</body>
-</html>
+/* STORIES */
+.story-card img{
+  width:100%;
+  border-radius:14px;
+  margin-top:12px;
+}
+
+/* GALLERY */
+.gallery{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:10px;
+}
+.gallery img{
+  height:240px;
+  border-radius:18px;
+  scroll-snap-align:center;
+  cursor:pointer;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+#lightbox img{
+  max-width:95%;
+  max-height:80%;
+  border-radius:18px;
+}
+#lightbox p{
+  position:absolute;
+  bottom:24px;
+  color:#fff;
+  text-align:center;
+  width:100%;
+  padding:0 20px;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#020617;
+  display
