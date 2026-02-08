@@ -1,154 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bristol Boys — Memories</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bristol Boys — End to End</title>
 
-<style>
-:root{
-  --bg:#050b1a;
-  --card:#101a33;
-  --accent:#5bc0be;
-  --text:#f1f5f9;
-}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-*{box-sizing:border-box}
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --accent: #22c55e;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+    }
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-  background:linear-gradient(180deg,#020617,#020617,#050b1a);
-  color:var(--text);
-}
+    * { box-sizing: border-box; }
 
-header{
-  padding:18px;
-  text-align:center;
-  font-size:22px;
-  font-weight:700;
-  background:linear-gradient(135deg,#020617,#101a33);
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:14px;
-  padding:16px;
-}
+    header {
+      padding: 1.2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      border-bottom: 1px solid #1f2933;
+    }
 
-.card{
-  background:var(--card);
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:1/1;
-  cursor:pointer;
-}
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
 
-.card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    header p {
+      margin: 0.3rem 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
-.viewer{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:100;
-}
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background: var(--panel);
+      border-top: 1px solid #1f2933;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
 
-.viewer img{
-  max-width:95%;
-  max-height:80%;
-  border-radius:12px;
-}
+    nav button {
+      flex: 1;
+      padding: 0.8rem 0;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
 
-.caption{
-  margin-top:12px;
-  color:#cbd5e1;
-  font-size:14px;
-}
+    nav button.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
 
-.nav{
-  position:absolute;
-  top:50%;
-  font-size:40px;
-  color:white;
-  padding:20px;
-  cursor:pointer;
-  user-select:none;
-}
+    main {
+      padding: 1rem;
+      padding-bottom: 4rem;
+    }
 
-.prev{left:0}
-.next{right:0}
+    section {
+      display: none;
+      animation: fade 0.3s ease;
+    }
 
-.close{
-  position:absolute;
-  top:20px;
-  right:20px;
-  font-size:30px;
-  cursor:pointer;
-}
-</style>
+    section.active {
+      display: block;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #1f2933;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>Bristol Boys — Memories</header>
+  <header>
+    <h1>🚴 Bristol Boys</h1>
+    <p>End to End Challenge</p>
+  </header>
 
-<div class="grid" id="grid"></div>
+  <main>
 
-<div class="viewer" id="viewer">
-  <div class="nav prev" onclick="move(-1)">‹</div>
-  <img id="viewerImg">
-  <div class="nav next" onclick="move(1)">›</div>
-  <div class="caption" id="caption"></div>
-  <div class="close" onclick="closeViewer()">✕</div>
-</div>
+    <!-- HOME -->
+    <section id="home" class="active">
+      <div class="card">
+        <h2>Welcome</h2>
+        <p class="muted">
+          John O’Groats to Land’s End.  
+          Miles, memories, graft, and chaos.
+        </p>
+      </div>
 
-<script>
-let photos=[];
-let current=0;
+      <div class="card">
+        <h2>Quick Stats</h2>
+        <p>📍 Route: UK End to End</p>
+        <p>📆 Year: 2012 / 2013</p>
+        <p>👥 Riders: Bristol Boys</p>
+      </div>
+    </section>
 
-fetch('photos.json')
-  .then(r=>r.json())
-  .then(data=>{
-    photos=data;
-    const grid=document.getElementById('grid');
-    data.forEach((p,i)=>{
-      const d=document.createElement('div');
-      d.className='card';
-      d.innerHTML=`<img src="${p.src}">`;
-      d.onclick=()=>openViewer(i);
-      grid.appendChild(d);
-    });
-  });
+    <!-- TIMELINE -->
+    <section id="timeline">
+      <div class="card">
+        <h2>Timeline</h2>
+        <p class="muted">
+          Day-by-day ride log, stories, graft levels, and moments that hurt.
+        </p>
+      </div>
+    </section>
 
-function openViewer(i){
-  current=i;
-  document.getElementById('viewer').style.display='flex';
-  update();
-}
+    <!-- PHOTOS -->
+    <section id="photos">
+      <div class="card">
+        <h2>Photos</h2>
+        <p class="muted">
+          Ride shots, pubs, pain faces, and finish-line relief.
+        </p>
+      </div>
+    </section>
 
-function closeViewer(){
-  document.getElementById('viewer').style.display='none';
-}
+    <!-- MAP -->
+    <section id="map">
+      <div class="card">
+        <h2>Route Map</h2>
+        <p class="muted">
+          Visual route tracking and daily stages.
+        </p>
+      </div>
+    </section>
 
-function move(dir){
-  current=(current+dir+photos.length)%photos.length;
-  update();
-}
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="card">
+        <h2>About the Ride</h2>
+        <p class="muted">
+          Why we did it, who we rode for, and what it meant.
+        </p>
+      </div>
+    </section>
 
-function update(){
-  document.getElementById('viewerImg').src=photos[current].src;
-  document.getElementById('caption').textContent=photos[current].caption;
-}
-</script>
+  </main>
+
+  <nav>
+    <button class="active" onclick="show('home', this)">Home</button>
+    <button onclick="show('timeline', this)">Timeline</button>
+    <button onclick="show('photos', this)">Photos</button>
+    <button onclick="show('map', this)">Map</button>
+    <button onclick="show('about', this)">About</button>
+  </nav>
+
+  <script>
+    function show(id, el) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
