@@ -123,4 +123,127 @@ nav{
   left:0;
   right:0;
   background:#020617;
-  display
+  display:flex;
+  border-top:1px solid #0f172a;
+}
+nav button{
+  flex:1;
+  padding:14px 0;
+  background:none;
+  border:none;
+  color:var(--muted);
+  font-size:12px;
+}
+nav button.active{
+  color:var(--accent);
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<header>Bristol Boys — End to End 2012</header>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero"></div>
+  <div class="card">
+    <h2>The Ride</h2>
+    <p>
+      John o’ Groats to Land’s End.  
+      Over a thousand miles.  
+      Weather, fatigue, laughs, breakdowns — and memories that stuck.
+    </p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="card timeline-day" onclick="toggleDay(this)">
+    <h2>Day 1 — John o’ Groats</h2>
+    <p>Tap to expand</p>
+    <div class="timeline-content">
+      <img src="photos/day1-start.jpg" width="100%" style="border-radius:14px">
+      <p>Cold air. Nervous laughs. Photos at the sign before the scale hit us.</p>
+    </div>
+  </div>
+
+  <div class="card timeline-day" onclick="toggleDay(this)">
+    <h2>Day 2 — Highlands</h2>
+    <p>Tap to expand</p>
+    <div class="timeline-content">
+      <img src="photos/map-route.jpg" width="100%" style="border-radius:14px">
+      <p>Wind, silence, long miles. Proper riding began here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section id="stories">
+  <div class="card story-card">
+    <h2>“I didn’t think we’d finish”</h2>
+    <p>
+      Day three nearly broke us. Nobody quit — but nobody pretended it was easy.
+    </p>
+    <img src="photos/group-shot.jpg">
+  </div>
+
+  <div class="card story-card">
+    <h2>“The laughs saved it”</h2>
+    <p>
+      Every brutal mile had a joke waiting at the next stop.
+    </p>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section id="photos">
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="photos/day1-start.jpg" onclick="openImage(this,'John o’ Groats start')">
+    <img src="photos/map-route.jpg" onclick="openImage(this,'Route map')">
+    <img src="photos/group-shot.jpg" onclick="openImage(this,'The team')">
+  </div>
+  <p style="color:var(--muted)">Swipe • Tap to enlarge</p>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeImage()">
+  <img id="lightboxImg">
+  <p id="lightboxText"></p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="active" onclick="show('home',this)">Home</button>
+  <button onclick="show('timeline',this)">Timeline</button>
+  <button onclick="show('stories',this)">Stories</button>
+  <button onclick="show('photos',this)">Photos</button>
+</nav>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+function toggleDay(el){
+  el.classList.toggle("open");
+}
+
+function openImage(img,caption){
+  document.getElementById("lightboxImg").src=img.src;
+  document.getElementById("lightboxText").innerText=caption;
+  document.getElementById("lightbox").style.display="flex";
+}
+
+function closeImage(){
+  document.getElementById("lightbox").style.display="none";
+}
+</script>
+
+</body>
+</html>
