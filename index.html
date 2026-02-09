@@ -34,14 +34,9 @@ var(--bg);
 
 main{max-width:1100px;margin:auto;padding:20px}
 
-.hero{
-padding:40px 10px 20px;
-text-align:center;
-}
-.hero h1{
-font-size:48px;margin:0;color:var(--accent);letter-spacing:-.5px
-}
-.hero p{color:var(--muted);margin-top:8px}
+.hero{padding:40px 10px 20px;text-align:center}
+.hero h1{font-size:48px;margin:0;color:var(--accent)}
+.hero p{color:var(--muted)}
 
 .card{
 background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
@@ -73,21 +68,12 @@ background:#151d34;border:1px solid var(--border);
 border-radius:16px;padding:14px;margin-bottom:10px
 }
 
-.grid{
-display:grid;gap:12px;
-grid-template-columns:repeat(auto-fill,minmax(140px,1fr))
-}
-.grid img{
-width:100%;border-radius:14px;cursor:pointer
-}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.grid img{width:100%;border-radius:14px;cursor:pointer}
 
-.lightbox{
-position:fixed;inset:0;background:rgba(0,0,0,.8);
-display:none;align-items:center;justify-content:center;z-index:99
-}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:99}
 .lightbox img{max-width:90%;max-height:90%;border-radius:18px}
 
-small{color:var(--muted)}
 a{color:var(--accent)}
 iframe{width:100%;border-radius:16px;border:0;height:360px}
 </style>
@@ -99,7 +85,7 @@ iframe{width:100%;border-radius:16px;border:0;height:360px}
 
 <div class="hero">
 <h1>Jeremy Quick Ride</h1>
-<p>Bristol Boys • John O’Groats → Land’s End • 2012</p>
+<p>Bristol Boys • <a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> → <a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a> • 2012</p>
 </div>
 
 <div class="tabs">
@@ -114,87 +100,56 @@ iframe{width:100%;border-radius:16px;border:0;height:360px}
 <button class="tab-btn">Uploads</button>
 </div>
 
-<!-- HOME -->
 <div class="tab active">
+<div class="card">Nine mates. Nine days. Roughly 960 miles.<br><br>No shortcuts. Nobody quit.</div>
+</div>
+
+<div class="tab">
 <div class="card">
-Nine mates. Nine days. Roughly 960 miles.<br><br>
-No shortcuts. Nobody quit.
+Day 1 <a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> → <a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a><br>
+Day 2 <a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a> → <a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a><br>
+Day 3 <a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a> → <a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a><br>
+Day 4 <a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a> → <a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a><br>
+Day 5 <a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a> → <a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a><br>
+Day 6 <a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a> → <a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a><br>
+Day 7 <a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a> → <a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a><br>
+Day 8 <a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a> → <a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a><br>
+Day 9 <a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a> → <a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a>
 </div>
 </div>
 
-<!-- STORY -->
 <div class="tab">
 <div class="card">
-Day 1 JOG → Inverness<br>
-Day 2 Inverness → Oban<br>
-Day 3 Oban → Arran<br>
-Day 4 Arran → Gretna (hardest day)<br>
-Day 5 Gretna → Preston<br>
-Day 6 Preston → Ludlow<br>
-Day 7 Ludlow → Bridgwater<br>
-Day 8 Bridgwater → Liskeard<br>
-Day 9 Liskeard → Land’s End<br><br>
-Relief. Pride. Proper teamwork.
+Charity: <a href="https://www.aboveandbeyond.org.uk" target="_blank">Above & Beyond</a>
 </div>
 </div>
 
-<!-- PLANNING -->
 <div class="tab">
 <div class="card">
-Charity: <a href="https://www.aboveandbeyond.org.uk" target="_blank">Above & Beyond</a><br><br>
-Forms, ferries, accommodation spreadsheets, banners, fundraising — months of graft before day one.
-</div>
-</div>
-
-<!-- ROUTE -->
-<div class="tab">
-<div class="card">
-John O’Groats → Inverness → Oban → Arran → Gretna → Preston → Ludlow → Bridgwater → Liskeard → Land’s End
+<a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> →
+<a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a> →
+<a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a> →
+<a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a> →
+<a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a> →
+<a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a> →
+<a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a> →
+<a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a> →
+<a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a> →
+<a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a>
 <br><br>
 <iframe src="https://www.google.com/maps?q=John%20O%27Groats%20to%20Land%27s%20End&output=embed"></iframe>
 </div>
 </div>
 
-<!-- TIMELINE -->
-<div class="tab">
-<div class="card" id="timeline"></div>
-</div>
+<div class="tab"><div class="card" id="timeline"></div></div>
 
-<!-- SPONSORS -->
-<div class="tab">
-<div class="card">
-<h3>Supporters</h3>
-• Friends & family<br>
-• Local businesses<br>
-• Everyone who donated or shared<br><br>
-If you helped — this ride belongs to you too.
-</div>
-</div>
+<div class="tab"><div class="card">Supporters: friends, family, businesses.</div></div>
 
-<!-- PHOTOS -->
-<div class="tab">
-<div class="card">
-<div class="grid" id="photos"></div>
-</div>
-</div>
+<div class="tab"><div class="card"><div class="grid" id="photos"></div></div></div>
 
-<!-- CHARITY -->
-<div class="tab">
-<div class="card">
-<h3>Thank You</h3>
-Raised for <b>Above & Beyond</b>.<br><br>
-Every mile ridden for patients, healing and Bristol.<br><br>
-(You can add your total here when ready.)
-</div>
-</div>
+<div class="tab"><div class="card">Raised for Above & Beyond.</div></div>
 
-<!-- UPLOADS -->
-<div class="tab">
-<div class="card">
-📧 <a href="mailto:jerquick@icloud.com">jerquick@icloud.com</a><br><br>
-📸 <a href="https://www.dropbox.com/requests" target="_blank">Dropbox Upload</a>
-</div>
-</div>
+<div class="tab"><div class="card">📧 <a href="mailto:jerquick@icloud.com">jerquick@icloud.com</a><br><br>📸 <a href="https://www.dropbox.com/requests" target="_blank">Dropbox Upload</a></div></div>
 
 </main>
 
@@ -203,47 +158,20 @@ Every mile ridden for patients, healing and Bristol.<br><br>
 <script>
 const btns=document.querySelectorAll(".tab-btn");
 const tabs=document.querySelectorAll(".tab");
-
-btns.forEach((b,i)=>b.onclick=()=>{
-btns.forEach(x=>x.classList.remove("active"));
-tabs.forEach(t=>t.classList.remove("active"));
-b.classList.add("active");
-tabs[i].classList.add("active");
-window.scrollTo(0,0);
-});
+btns.forEach((b,i)=>b.onclick=()=>{btns.forEach(x=>x.classList.remove("active"));tabs.forEach(t=>t.classList.remove("active"));b.classList.add("active");tabs[i].classList.add("active");});
 
 const timelineData=[
 "2011-12-07 Charity approved",
 "2012-01-29 Planning milestone",
-"2012-06-15 Day 1 Start",
-"2012-06-18 Arran → Gretna (hardest)",
+"2012-06-15 Day 1 John O’Groats → Inverness",
+"2012-06-18 Arran → Gretna",
 "2012-06-23 Finish Land’s End"
 ];
+timelineData.forEach(i=>timeline.innerHTML+=`<div class="timeline-item">${i}</div>`);
 
-timelineData.forEach(i=>{
-timeline.innerHTML+=`<div class="timeline-item">${i}</div>`;
+["photos/01.jpg","photos/group-shot.jpg","photos/map-route.jpg"].forEach(p=>{
+photos.innerHTML+=`<img src="${p}">`;
 });
-
-const photos=[
-"photos/01.jpg",
-"photos/group-shot.jpg",
-"photos/map-route.jpg"
-];
-
-photos.forEach(p=>{
-document.getElementById("photos").innerHTML+=`<img src="${p}">`;
-});
-
-const lb=document.getElementById("lightbox");
-document.querySelectorAll(".grid").forEach(g=>{
-g.onclick=e=>{
-if(e.target.tagName==="IMG"){
-lb.style.display="flex";
-lb.querySelector("img").src=e.target.src;
-}
-};
-});
-lb.onclick=()=>lb.style.display="none";
 </script>
 
 </body>
