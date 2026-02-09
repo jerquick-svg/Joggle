@@ -34,7 +34,7 @@ var(--bg);
 
 main{max-width:1100px;margin:auto;padding:20px}
 
-.hero{padding:40px 10px 20px;text-align:center}
+.hero{text-align:center;padding:40px 10px 20px}
 .hero h1{font-size:48px;margin:0;color:var(--accent)}
 .hero p{color:var(--muted)}
 
@@ -58,7 +58,7 @@ backdrop-filter:blur(10px)
 background:#1b233b;border:1px solid var(--border);
 border-radius:999px;padding:12px 18px;font-size:15px;color:var(--muted)
 }
-.tab-btn.active{background:var(--accent);color:#041018;border-color:transparent}
+.tab-btn.active{background:var(--accent);color:#041018}
 
 .tab{display:none}
 .tab.active{display:block}
@@ -69,12 +69,10 @@ border-radius:16px;padding:14px;margin-bottom:10px
 }
 
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.grid img{width:100%;border-radius:14px;cursor:pointer}
-
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:99}
-.lightbox img{max-width:90%;max-height:90%;border-radius:18px}
+.grid img{width:100%;border-radius:14px}
 
 a{color:var(--accent)}
+.place{display:inline-flex;gap:6px;align-items:center}
 iframe{width:100%;border-radius:16px;border:0;height:360px}
 </style>
 </head>
@@ -85,7 +83,7 @@ iframe{width:100%;border-radius:16px;border:0;height:360px}
 
 <div class="hero">
 <h1>Jeremy Quick Ride</h1>
-<p>Bristol Boys • <a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> → <a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a> • 2012</p>
+<p>Bristol Boys • John O’Groats → Land’s End • 2012</p>
 </div>
 
 <div class="tabs">
@@ -94,9 +92,7 @@ iframe{width:100%;border-radius:16px;border:0;height:360px}
 <button class="tab-btn">Planning</button>
 <button class="tab-btn">Route</button>
 <button class="tab-btn">Timeline</button>
-<button class="tab-btn">Sponsors</button>
 <button class="tab-btn">Photos</button>
-<button class="tab-btn">Charity</button>
 <button class="tab-btn">Uploads</button>
 </div>
 
@@ -106,64 +102,88 @@ iframe{width:100%;border-radius:16px;border:0;height:360px}
 
 <div class="tab">
 <div class="card">
-Day 1 <a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> → <a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a><br>
-Day 2 <a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a> → <a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a><br>
-Day 3 <a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a> → <a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a><br>
-Day 4 <a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a> → <a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a><br>
-Day 5 <a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a> → <a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a><br>
-Day 6 <a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a> → <a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a><br>
-Day 7 <a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a> → <a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a><br>
-Day 8 <a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a> → <a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a><br>
-Day 9 <a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a> → <a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a>
+
+Day 1 
+<span class="place"><a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a>
+<a href="https://maps.google.com/?q=John+O'+Groats" target="_blank">📍</a></span> →
+<span class="place"><a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a>
+<a href="https://maps.google.com/?q=Inverness" target="_blank">📍</a></span><br>
+
+Day 2 Inverness → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a>
+<a href="https://maps.google.com/?q=Oban+Scotland" target="_blank">📍</a></span><br>
+
+Day 3 Oban → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a>
+<a href="https://maps.google.com/?q=Isle+of+Arran" target="_blank">📍</a></span><br>
+
+Day 4 Arran → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a>
+<a href="https://maps.google.com/?q=Gretna+Scotland" target="_blank">📍</a></span><br>
+
+Day 5 Gretna → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a>
+<a href="https://maps.google.com/?q=Preston+Lancashire" target="_blank">📍</a></span><br>
+
+Day 6 Preston → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a>
+<a href="https://maps.google.com/?q=Ludlow+UK" target="_blank">📍</a></span><br>
+
+Day 7 Ludlow → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a>
+<a href="https://maps.google.com/?q=Bridgwater" target="_blank">📍</a></span><br>
+
+Day 8 Bridgwater → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a>
+<a href="https://maps.google.com/?q=Liskeard" target="_blank">📍</a></span><br>
+
+Day 9 Liskeard → 
+<span class="place"><a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a>
+<a href="https://maps.google.com/?q=Land's+End+Cornwall" target="_blank">📍</a></span>
+
 </div>
 </div>
 
 <div class="tab">
 <div class="card">
-Charity: <a href="https://www.aboveandbeyond.org.uk" target="_blank">Above & Beyond</a>
-</div>
-</div>
-
-<div class="tab">
-<div class="card">
-<a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank">John O’Groats</a> →
-<a href="https://en.wikipedia.org/wiki/Inverness" target="_blank">Inverness</a> →
-<a href="https://en.wikipedia.org/wiki/Oban" target="_blank">Oban</a> →
-<a href="https://en.wikipedia.org/wiki/Isle_of_Arran" target="_blank">Arran</a> →
-<a href="https://en.wikipedia.org/wiki/Gretna,_Scotland" target="_blank">Gretna</a> →
-<a href="https://en.wikipedia.org/wiki/Preston,_Lancashire" target="_blank">Preston</a> →
-<a href="https://en.wikipedia.org/wiki/Ludlow" target="_blank">Ludlow</a> →
-<a href="https://en.wikipedia.org/wiki/Bridgwater" target="_blank">Bridgwater</a> →
-<a href="https://en.wikipedia.org/wiki/Liskeard" target="_blank">Liskeard</a> →
-<a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank">Land’s End</a>
-<br><br>
+Full route map:<br><br>
 <iframe src="https://www.google.com/maps?q=John%20O%27Groats%20to%20Land%27s%20End&output=embed"></iframe>
 </div>
 </div>
 
-<div class="tab"><div class="card" id="timeline"></div></div>
+<div class="tab">
+<div class="card" id="timeline"></div>
+</div>
 
-<div class="tab"><div class="card">Supporters: friends, family, businesses.</div></div>
+<div class="tab">
+<div class="card">
+<div class="grid" id="photos"></div>
+</div>
+</div>
 
-<div class="tab"><div class="card"><div class="grid" id="photos"></div></div></div>
-
-<div class="tab"><div class="card">Raised for Above & Beyond.</div></div>
-
-<div class="tab"><div class="card">📧 <a href="mailto:jerquick@icloud.com">jerquick@icloud.com</a><br><br>📸 <a href="https://www.dropbox.com/requests" target="_blank">Dropbox Upload</a></div></div>
+<div class="tab">
+<div class="card">
+📧 <a href="mailto:jerquick@icloud.com">jerquick@icloud.com</a><br><br>
+📸 <a href="https://www.dropbox.com/requests" target="_blank">Dropbox Upload</a>
+</div>
+</div>
 
 </main>
-
-<div class="lightbox" id="lightbox"><img></div>
 
 <script>
 const btns=document.querySelectorAll(".tab-btn");
 const tabs=document.querySelectorAll(".tab");
-btns.forEach((b,i)=>b.onclick=()=>{btns.forEach(x=>x.classList.remove("active"));tabs.forEach(t=>t.classList.remove("active"));b.classList.add("active");tabs[i].classList.add("active");});
+btns.forEach((b,i)=>b.onclick=()=>{
+btns.forEach(x=>x.classList.remove("active"));
+tabs.forEach(t=>t.classList.remove("active"));
+b.classList.add("active");
+tabs[i].classList.add("active");
+});
 
 const timelineData=[
 "2011-12-07 Charity approved",
 "2012-01-29 Planning milestone",
-"2012-06-15 Day 1 John O’Groats → Inverness",
+"2012-06-15 Day 1 John O’Groats",
 "2012-06-18 Arran → Gretna",
 "2012-06-23 Finish Land’s End"
 ];
