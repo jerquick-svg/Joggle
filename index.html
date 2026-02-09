@@ -1,354 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bristol Boys – End to End (Super Jerrys)</title>
-<meta name="theme-color" content="#0b1220" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bristol Boys – End to End</title>
 
 <style>
 :root{
-  --bg:#0b1220;
-  --card:#121c33;
-  --text:#eaf2ff;
-  --muted:#a9b6d3;
-  --accent:#00ffd5;
-  --accentText:#041018;
-  --border:rgba(255,255,255,.10);
-  --shadow:0 18px 55px rgba(0,0,0,.45);
+--bg:#0b1220;
+--card:#121c33;
+--text:#eaf2ff;
+--muted:#a9b6d3;
+--accent:#00ffd5;
+--border:rgba(255,255,255,.12);
+--shadow:0 25px 80px rgba(0,0,0,.55);
 }
+
 *{box-sizing:border-box}
+
 body{
-  margin:0; padding:18px;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:
-    radial-gradient(1200px 600px at 18% 0%, rgba(0,255,213,.12), transparent 55%),
-    radial-gradient(900px 500px at 90% 10%, rgba(110,155,255,.12), transparent 60%),
-    var(--bg);
-  color:var(--text);
+margin:0;padding:28px;
+font-family:-apple-system,BlinkMacSystemFont,Arial;
+background:
+radial-gradient(1400px 700px at 20% 0%,rgba(0,255,213,.18),transparent 55%),
+radial-gradient(1000px 600px at 90% 10%,rgba(110,155,255,.18),transparent 60%),
+var(--bg);
+color:var(--text);
+line-height:1.7
 }
-.container{max-width:980px;margin:0 auto}
-h1{margin:0;color:var(--accent);font-size:32px;letter-spacing:.2px}
-h2{margin:0 0 8px 0;color:var(--accent)}
-h3{margin:0 0 8px 0}
-.sub{margin:6px 0 0 0;color:var(--muted);line-height:1.45}
 
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-a.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:12px 14px;border-radius:14px;
-  text-decoration:none;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.04);
-  color:var(--text);
-  font-weight:900;
-  box-shadow:var(--shadow);
-}
-a.btn.primary{
-  background:linear-gradient(135deg, rgba(0,255,213,1), rgba(0,195,255,.9));
-  color:var(--accentText);
-  border:none;
-}
-a.btn:active{transform:scale(.98)}
+.container{max-width:1100px;margin:auto}
 
-.tabs{
-  margin-top:18px;
-  display:flex;gap:8px;flex-wrap:wrap;
-  position:sticky;top:0;z-index:10;
-  padding:10px 0;
-  background: linear-gradient(to bottom, rgba(11,18,32,.95), rgba(11,18,32,.65), rgba(11,18,32,0));
-  backdrop-filter: blur(10px);
+h1{color:var(--accent);font-size:42px;margin:0}
+h2{color:var(--accent)}
+.small{color:var(--muted)}
+
+.actions{margin:20px 0}
+
+.btn{
+display:inline-block;
+background:linear-gradient(135deg,#00ffd5,#00c8ff);
+color:#041018;
+padding:16px 22px;
+border-radius:22px;
+font-weight:900;
+text-decoration:none;
+margin:6px 8px 6px 0
 }
-button.tab{
-  appearance:none;border:none;
-  padding:10px 12px;border-radius:999px;
-  background:rgba(255,255,255,.04);
-  color:var(--muted);
-  border:1px solid var(--border);
-  font-weight:1000;
+
+.tabs{margin:25px 0}
+
+.tab{
+background:#1b233b;
+color:#aaa;
+border:none;
+padding:14px 20px;
+border-radius:25px;
+font-weight:900;
+margin-right:8px
 }
-button.tab.active{
-  color:var(--accentText);
-  background:var(--accent);
-  border-color:transparent;
-}
+.tab.active{background:#00ffd5;color:black}
 
 .panel{display:none}
 .panel.active{display:block}
 
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:16px;
-  box-shadow:var(--shadow);
-  margin:14px 0;
+background:var(--card);
+border-radius:26px;
+padding:26px;
+margin:22px 0;
+border:1px solid var(--border);
+box-shadow:var(--shadow)
 }
-.muted{color:var(--muted);line-height:1.65}
-.k{color:var(--accent);font-weight:1000}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 10px;border-radius:999px;
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--border);
-  color:var(--muted);
-  font-weight:900;
-  font-size:13px;
-}
-.two{display:grid;gap:12px;grid-template-columns: repeat(2, minmax(0,1fr));}
-@media (max-width:720px){ .two{grid-template-columns:1fr} }
-hr{border:none;border-top:1px solid rgba(255,255,255,.10);margin:14px 0}
-a.link{color:var(--accent);text-decoration:none;font-weight:900}
-a.link:active{opacity:.8}
 
 details{
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:14px;
-  padding:10px 12px;
-  background:rgba(255,255,255,.03);
-  margin:10px 0;
+background:#151d34;
+padding:16px;
+border-radius:18px;
+margin:16px 0
 }
-details summary{cursor:pointer;font-weight:1000}
-.footer{margin:26px 0 10px 0;color:var(--muted);font-size:13px;text-align:center}
-code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+
+summary{font-weight:900;cursor:pointer}
+
+.footer{text-align:center;color:#889;margin:50px 0}
+
 </style>
 </head>
 
 <body>
 <div class="container">
-  <header>
-    <h1>🚴 Bristol Boys – End to End</h1>
-    <p class="sub">Land’s End → John O’Groats • <span class="k">Everything in one place</span> (story, planning, route, days, uploads).</p>
 
-    <div class="actions">
-      <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20End-to-End%20(Photos%20%2B%20Notes)&body=Hi%20Jeremy%2C%0A%0AI%E2%80%99ve%20attached%20photos%2Fnotes%20from%20the%20End-to-End.%0A%0A-%20Name%3A%0A-%20Which%20day%2Fplace%3A%0A-%20Any%20story%3A%0A%0AThanks!">📧 Email Photos</a>
-      <a class="btn" href="#uploads">📸 Uploads</a>
-      <a class="btn" href="https://www.google.com/maps/search/Land%27s+End+to+John+O%27Groats" target="_blank" rel="noopener">🌍 Route Map</a>
-      <a class="btn" href="https://api.whatsapp.com/send?text=Bristol%20Boys%20End-to-End%20Ride%20%E2%9A%A1%20https%3A%2F%2Fjerquick-svg.github.io%2FJoggle" target="_blank" rel="noopener">📲 Share</a>
-      <a class="btn" href="./files/Bristol_Boys_END2END.pptx" target="_blank" rel="noopener">📎 PowerPoint</a>
-    </div>
-  </header>
+<h1>🚴 Bristol Boys — End to End</h1>
+<p class="small">Land’s End → John O’Groats</p>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="home">Home</button>
-    <button class="tab" data-tab="story">Story</button>
-    <button class="tab" data-tab="planning">Planning</button>
-    <button class="tab" data-tab="route">Route</button>
-    <button class="tab" data-tab="days">Ride Days</button>
-    <button class="tab" data-tab="uploads">Uploads</button>
-  </div>
+<div class="actions">
+<a class="btn" href="mailto:jerquick@icloud.com">📧 Send Photos</a>
+<a class="btn" href="./files/Bristol_Boys_END2END.pptx">📎 PowerPoint</a>
+<a class="btn" href="https://www.google.com/maps/search/Land%27s+End+to+John+O%27Groats" target="_blank">🌍 Route</a>
+</div>
 
-  <!-- HOME -->
-  <section class="panel active" id="home">
-    <div class="card">
-      <h2>Quick start</h2>
-      <p class="muted">
-        This is the <span class="k">live</span> Bristol Boys End-to-End page.
-        Tap the buttons at the top for Email / Route / Share.
-        Use <span class="pill">Ride Days</span> to read the journey.
-        Use <span class="pill">Uploads</span> to send photos and PowerPoints.
-      </p>
-      <div class="two">
-        <div class="card" style="margin:0">
-          <h3>What works right now</h3>
-          <p class="muted">
-            ✅ Email Photos (always works)<br>
-            ✅ Route Map (always works)<br>
-            ✅ Share (always works)<br>
-            ✅ Tabs (always works)<br>
-            ✅ PowerPoint link becomes live once you upload the file
-          </p>
-        </div>
-        <div class="card" style="margin:0">
-          <h3>Photos later</h3>
-          <p class="muted">
-            You can add pictures later without breaking anything.
-            This build is made so the story stands on its own.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="tabs">
+<button class="tab active" data-tab="home">Home</button>
+<button class="tab" data-tab="story">Story</button>
+<button class="tab" data-tab="planning">Planning</button>
+<button class="tab" data-tab="route">Route</button>
+<button class="tab" data-tab="ride">Ride Days</button>
+<button class="tab" data-tab="uploads">Uploads</button>
+</div>
 
-  <!-- STORY -->
-  <section class="panel" id="story">
-    <div class="card">
-      <h2>The Story</h2>
-      <p class="muted">
-        Nine mates. One road. Over a thousand miles from Cornwall to the top of Scotland.
-        Early alarms, dodgy weather, sunburnt faces, sore legs and sore arses —
-        and that quiet pride you only get after you’ve earned it.
-      </p>
-      <p class="muted">
-        The Bristol Boys End-to-End wasn’t just cycling. It was teamwork, grit, laughs,
-        and moments you don’t forget.
-      </p>
-    </div>
-  </section>
+<!-- HOME -->
+<section id="home" class="panel active">
 
-  <!-- PLANNING -->
-  <section class="panel" id="planning">
-    <div class="card">
-      <h2>Planning & Fundraising</h2>
+<div class="card">
+<h2>The Journey</h2>
 
-      <details open>
-        <summary>📅 7 Dec 2011 — Charity approval confirmed</summary>
-        <p class="muted">
-          Above &amp; Beyond formally approved the John O’Groats to Land’s End ride.
-          Fundraising permissions granted and the challenge officially recognised.
-        </p>
-      </details>
+<p>Nine mates. One road. Over a thousand miles.</p>
 
-      <details>
-        <summary>📅 14 Jan 2012 — Early promotion &amp; planning</summary>
-        <p class="muted">
-          Fundraising letters and files shared. Banners requested. Website photos chased.
-          Team meeting arranged. Momentum building.
-        </p>
-      </details>
+<p>
+Early alarms. Rain in the face. Sunburn on noses.
+Legs screaming. Shared breakfasts. Dark humour.
+Quiet miles where nobody speaks.
+</p>
 
-      <details>
-        <summary>📅 29 Jan 2012 — Big planning milestone</summary>
-        <p class="muted">
-          Accommodation mapped out: <span class="k">John O’Groats</span>, <span class="k">Inverness</span>,
-          <span class="k">Oban</span>, <span class="k">Whiting Bay (Arran)</span>, <span class="k">Gretna</span>,
-          <span class="k">Preston</span>, <span class="k">Ludlow</span>, <span class="k">Bridgwater</span>,
-          <span class="k">Liskeard</span>, then finish <span class="k">Land’s End</span>.
-        </p>
-      </details>
+<p>
+Some days felt easy.  
+Some days felt endless.  
+Nobody quit. Everyone showed up.
+</p>
 
-      <p class="muted">
-        Want every admin detail (room shares, names, links, email drops)? Paste it into chat and I’ll insert it here cleanly.
-      </p>
-    </div>
-  </section>
+</div>
 
-  <!-- ROUTE -->
-  <section class="panel" id="route">
-    <div class="card">
-      <h2>Route stops (your list)</h2>
-      <p class="muted">
-        Start: <span class="k">John O’Groats</span> → <span class="k">Inverness</span> → <span class="k">Oban</span> →
-        <span class="k">Whiting Bay (Arran)</span> → <span class="k">Gretna</span> → <span class="k">Preston</span> →
-        <span class="k">Ludlow</span> → <span class="k">Bridgwater</span> → <span class="k">Liskeard</span> → Finish: <span class="k">Land’s End</span>
-      </p>
+</section>
 
-      <div class="two">
-        <div class="card" style="margin:0">
-          <h3>Links</h3>
-          <p class="muted">
-            • Gretna Green: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gretna_Green">Wikipedia</a><br/>
-            • Preston: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Preston">Wikipedia</a><br/>
-            • Ludlow: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ludlow">Wikipedia</a><br/>
-            • Bridgwater: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bridgwater">Wikipedia</a><br/>
-            • Liskeard: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Liskeard">Wikipedia</a>
-          </p>
-        </div>
-        <div class="card" style="margin:0">
-          <h3>Map</h3>
-          <p class="muted">Tap <span class="pill">🌍 Route Map</span> at the top to open maps fast on iPhone.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- STORY -->
+<section id="story" class="panel">
 
-  <!-- RIDE DAYS -->
-  <section class="panel" id="days">
-    <div class="card">
-      <h2>Ride Days</h2>
-      <p class="muted">
-        This is your ride-day section. It’s laid out properly so you can paste the full text later
-        and it stays readable.
-      </p>
+<div class="card">
+<h2>The Story</h2>
 
-      <details open>
-        <summary>Day 1 — Land’s End → Bodmin</summary>
-        <p class="muted">Start day. Nerves. Fresh legs. Big smiles. Wind at our backs.</p>
-      </details>
+<p>
+The Bristol Boys End-to-End wasn’t just cycling.
+It was friendship, grit, laughter and memories earned mile by mile.
+</p>
 
-      <details>
-        <summary>Day 4 — Arran → Gretna (Hardest Day)</summary>
-        <p class="muted">Headwinds, long miles, morale tested. Proper grit required. Team pulls together.</p>
-      </details>
+<p>
+This page holds the journey — the planning, the hardest day,
+and the finish that made every ache worth it.
+</p>
 
-      <details>
-        <summary>Day 5 — Gretna → Preston</summary>
-        <p class="muted">Into England. Flatter roads. Recovery day. Arses still on fire.</p>
-      </details>
+</div>
 
-      <details>
-        <summary>Finish — John O’Groats</summary>
-        <p class="muted">Tears. Hugs. Exhaustion. We made it. Every mile earned.</p>
-      </details>
+</section>
 
-      <hr>
-      <p class="muted">
-        If you paste your full day-by-day notes in here later, it becomes the full “everything”.
-        I’m not inventing missing days because you asked for your true story.
-      </p>
-    </div>
-  </section>
+<!-- PLANNING -->
+<section id="planning" class="panel">
 
-  <!-- UPLOADS -->
-  <section class="panel" id="uploads">
-    <div class="card" id="uploads">
-      <h2>Uploads (Photos + PowerPoints)</h2>
-      <div class="card" style="margin:0">
-        <h3>Fastest (works instantly): Email</h3>
-        <p class="muted">Tap and attach photos / PPT / documents:</p>
-        <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20Uploads&body=Attach%20photos%20or%20PowerPoint%20here.%20Thanks!">📧 Email Upload</a>
-      </div>
+<div class="card">
+<h2>Planning & Build-Up</h2>
 
-      <div class="card">
-        <h3>Dropbox (optional)</h3>
-        <p class="muted">
-          Dropbox needs your unique request link. Create it here:
-          <a class="link" target="_blank" rel="noopener" href="https://www.dropbox.com/requests">dropbox.com/requests</a>
-          then paste it into the code at <span class="pill">DROPBOX_REQUEST_LINK</span>.
-        </p>
-        <a class="btn" id="dropboxBtn" href="https://www.dropbox.com/requests" target="_blank" rel="noopener">📸 Open Dropbox Requests</a>
-      </div>
+<details open>
+<summary>December 2011 — Charity approval</summary>
+<p>Ride officially confirmed.</p>
+</details>
 
-      <div class="card">
-        <h3>PowerPoint link</h3>
-        <p class="muted">
-          Upload your PowerPoint file to: <code>/files/Bristol_Boys_END2END.pptx</code><br/>
-          Then the top button <span class="pill">📎 PowerPoint</span> becomes a one-tap download.
-        </p>
-      </div>
-    </div>
+<details>
+<summary>January 2012 — Momentum builds</summary>
+<p>Fundraising launched. Accommodation booked. Banners ordered.</p>
+</details>
 
-    <div class="footer">Single-file • iPhone-safe • Bristol Boys End-to-End</div>
-  </section>
+<details>
+<summary>Route Locked</summary>
+<p>
+John O’Groats → Inverness → Oban → Arran → Gretna → Preston → Ludlow → Bridgwater → Liskeard → Land’s End
+</p>
+</details>
+
+</div>
+
+</section>
+
+<!-- ROUTE -->
+<section id="route" class="panel">
+
+<div class="card">
+<h2>Route Stops</h2>
+
+<p>
+Start John O’Groats  
+Inverness  
+Oban  
+Whiting Bay (Arran)  
+Gretna  
+Preston  
+Ludlow  
+Bridgwater  
+Liskeard  
+Finish Land’s End
+</p>
+
+</div>
+
+</section>
+
+<!-- RIDE -->
+<section id="ride" class="panel">
+
+<div class="card">
+<h2>The Hardest Day — Arran → Gretna</h2>
+
+<p>
+Headwinds all day. Long climbs. Morale tested.
+</p>
+
+<p>
+Nobody had anything left — but nobody stopped.
+</p>
+
+<p>
+This was the day the ride earned its respect.
+</p>
+
+</div>
+
+<div class="card">
+<h2>The Finish</h2>
+
+<p>
+John O’Groats.
+</p>
+
+<p>
+Hugs. Tears. Exhaustion.
+Quiet pride.
+</p>
+
+<p>
+Every mile earned.
+</p>
+
+</div>
+
+</section>
+
+<!-- UPLOADS -->
+<section id="uploads" class="panel">
+
+<div class="card">
+<h2>Uploads</h2>
+
+<p>Email photos or documents:</p>
+
+<a class="btn" href="mailto:jerquick@icloud.com">📧 Email Upload</a>
+
+<p class="small">Optional Dropbox: https://www.dropbox.com/requests</p>
+
+</div>
+
+<div class="card">
+<h2>Thank You</h2>
+
+<p>
+To everyone who donated, supported, followed the journey
+or sent messages along the way — thank you.
+</p>
+
+<p>
+This ride belonged to all of you as much as it did to us.
+</p>
+
+</div>
+
+</section>
+
+<div class="footer">
+Bristol Boys End-to-End • Single-page journey build
+</div>
+
 </div>
 
 <script>
-const tabs = document.querySelectorAll('.tab');
-const panels = {
-  home: document.getElementById('home'),
-  story: document.getElementById('story'),
-  planning: document.getElementById('planning'),
-  route: document.getElementById('route'),
-  days: document.getElementById('days'),
-  uploads: document.getElementById('uploads'),
-};
-tabs.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    tabs.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    Object.values(panels).forEach(p=>p.classList.remove('active'));
-    panels[btn.dataset.tab].classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-});
+const tabs=document.querySelectorAll('.tab');
+const panels=document.querySelectorAll('.panel');
 
-// Optional: paste your Dropbox request link here
-const DROPBOX_REQUEST_LINK = ""; // <- paste "https://www.dropbox.com/request/XXXX" between quotes
-if (DROPBOX_REQUEST_LINK && DROPBOX_REQUEST_LINK.startsWith("https://www.dropbox.com/request/")) {
-  const b = document.getElementById("dropboxBtn");
-  b.href = DROPBOX_REQUEST_LINK;
-  b.textContent = "📸 Upload Photos (Dropbox)";
+tabs.forEach(t=>{
+t.onclick=()=>{
+tabs.forEach(x=>x.classList.remove('active'));
+panels.forEach(p=>p.classList.remove('active'));
+t.classList.add('active');
+document.getElementById(t.dataset.tab).classList.add('active');
+window.scrollTo(0,0);
 }
+});
 </script>
+
 </body>
 </html>
