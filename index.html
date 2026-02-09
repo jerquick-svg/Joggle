@@ -3,131 +3,136 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Super Jerrys – End to End</title>
+<title>Bristol Boys – End to End (Super Jerrys)</title>
 <meta name="theme-color" content="#0b1220" />
 
 <style>
-  :root{
-    --bg:#0b1220;
-    --card:#121c33;
-    --text:#eaf2ff;
-    --muted:#a9b6d3;
-    --accent:#00ffd5;
-    --accentText:#041018;
-    --border:rgba(255,255,255,.10);
-    --shadow:0 18px 55px rgba(0,0,0,.45);
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; padding:18px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:
-      radial-gradient(1200px 600px at 20% 0%, rgba(0,255,213,.12), transparent 55%),
-      radial-gradient(900px 500px at 90% 10%, rgba(110,155,255,.12), transparent 60%),
-      var(--bg);
-    color:var(--text);
-  }
-  .container{max-width:980px;margin:0 auto}
-  header{margin-bottom:12px}
-  h1{margin:0;color:var(--accent);font-size:32px;letter-spacing:.2px}
-  .sub{margin:6px 0 0 0;color:var(--muted);line-height:1.35}
-  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  a.btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:12px 14px;border-radius:14px;
-    text-decoration:none;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.04);
-    color:var(--text);
-    font-weight:800;
-    box-shadow:var(--shadow);
-  }
-  a.btn.primary{
-    background:linear-gradient(135deg, rgba(0,255,213,1), rgba(0,195,255,.9));
-    color:var(--accentText); border:none;
-  }
-  a.btn:active{transform:scale(.98)}
-  .tabs{
-    margin-top:18px;
-    display:flex;gap:8px;flex-wrap:wrap;
-    position:sticky;top:0;z-index:10;
-    padding:10px 0;
-    background: linear-gradient(to bottom, rgba(11,18,32,.95), rgba(11,18,32,.65), rgba(11,18,32,0));
-    backdrop-filter: blur(10px);
-  }
-  button.tab{
-    appearance:none;border:none;
-    padding:10px 12px;border-radius:999px;
-    background:rgba(255,255,255,.04);
-    color:var(--muted);
-    border:1px solid var(--border);
-    font-weight:900;
-  }
-  button.tab.active{
-    color:var(--accentText);
-    background:var(--accent);
-    border-color:transparent;
-  }
-  .panel{display:none}
-  .panel.active{display:block}
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:16px;
-    box-shadow:var(--shadow);
-    margin:14px 0;
-  }
-  .muted{color:var(--muted);line-height:1.6}
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:7px 10px;border-radius:999px;
-    background:rgba(255,255,255,.04);
-    border:1px solid var(--border);
-    color:var(--muted);
-    font-weight:900;
-    font-size:13px;
-  }
-  details summary{cursor:pointer;font-weight:900}
-  .two{
-    display:grid;gap:12px;
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-  @media (max-width:720px){ .two{grid-template-columns:1fr} }
-  .k{color:var(--accent);font-weight:900}
-  .link{color:var(--accent);text-decoration:none;font-weight:800}
-  .link:active{opacity:.8}
-  hr{border:none;border-top:1px solid rgba(255,255,255,.10);margin:14px 0}
-  .footer{margin:26px 0 10px 0;color:var(--muted);font-size:13px;text-align:center}
-  code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+:root{
+  --bg:#0b1220;
+  --card:#121c33;
+  --text:#eaf2ff;
+  --muted:#a9b6d3;
+  --accent:#00ffd5;
+  --accentText:#041018;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 18px 55px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; padding:18px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 18% 0%, rgba(0,255,213,.12), transparent 55%),
+    radial-gradient(900px 500px at 90% 10%, rgba(110,155,255,.12), transparent 60%),
+    var(--bg);
+  color:var(--text);
+}
+.container{max-width:980px;margin:0 auto}
+h1{margin:0;color:var(--accent);font-size:32px;letter-spacing:.2px}
+h2{margin:0 0 8px 0;color:var(--accent)}
+h3{margin:0 0 8px 0}
+.sub{margin:6px 0 0 0;color:var(--muted);line-height:1.45}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+a.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:12px 14px;border-radius:14px;
+  text-decoration:none;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  font-weight:900;
+  box-shadow:var(--shadow);
+}
+a.btn.primary{
+  background:linear-gradient(135deg, rgba(0,255,213,1), rgba(0,195,255,.9));
+  color:var(--accentText);
+  border:none;
+}
+a.btn:active{transform:scale(.98)}
+
+.tabs{
+  margin-top:18px;
+  display:flex;gap:8px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:10;
+  padding:10px 0;
+  background: linear-gradient(to bottom, rgba(11,18,32,.95), rgba(11,18,32,.65), rgba(11,18,32,0));
+  backdrop-filter: blur(10px);
+}
+button.tab{
+  appearance:none;border:none;
+  padding:10px 12px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+  border:1px solid var(--border);
+  font-weight:1000;
+}
+button.tab.active{
+  color:var(--accentText);
+  background:var(--accent);
+  border-color:transparent;
+}
+
+.panel{display:none}
+.panel.active{display:block}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:var(--shadow);
+  margin:14px 0;
+}
+.muted{color:var(--muted);line-height:1.65}
+.k{color:var(--accent);font-weight:1000}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:999px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  color:var(--muted);
+  font-weight:900;
+  font-size:13px;
+}
+.two{display:grid;gap:12px;grid-template-columns: repeat(2, minmax(0,1fr));}
+@media (max-width:720px){ .two{grid-template-columns:1fr} }
+hr{border:none;border-top:1px solid rgba(255,255,255,.10);margin:14px 0}
+a.link{color:var(--accent);text-decoration:none;font-weight:900}
+a.link:active{opacity:.8}
+
+details{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  padding:10px 12px;
+  background:rgba(255,255,255,.03);
+  margin:10px 0;
+}
+details summary{cursor:pointer;font-weight:1000}
+.footer{margin:26px 0 10px 0;color:var(--muted);font-size:13px;text-align:center}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
 </style>
 </head>
 
 <body>
 <div class="container">
   <header>
-    <h1>🚴 Super Jerrys – End to End</h1>
-    <p class="sub">Land’s End → John O’Groats • The full Bristol Boys story in one place.</p>
+    <h1>🚴 Bristol Boys – End to End</h1>
+    <p class="sub">Land’s End → John O’Groats • <span class="k">Everything in one place</span> (story, planning, route, days, uploads).</p>
 
     <div class="actions">
-      <!-- iPhone-safe -->
-      <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Super%20Jerrys%20End-to-End%20Photos&body=Hi%20Jeremy%2C%0A%0AHere%20are%20photos%2Fnotes%20from%20the%20ride%3A%0A%0A(attach%20files%20here)%0A%0AThanks%21">📧 Email Photos</a>
-
-      <!-- Upload section (never 404s) -->
-      <a class="btn" href="#uploads">📸 Upload Drop</a>
-
+      <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20End-to-End%20(Photos%20%2B%20Notes)&body=Hi%20Jeremy%2C%0A%0AI%E2%80%99ve%20attached%20photos%2Fnotes%20from%20the%20End-to-End.%0A%0A-%20Name%3A%0A-%20Which%20day%2Fplace%3A%0A-%20Any%20story%3A%0A%0AThanks!">📧 Email Photos</a>
+      <a class="btn" href="#uploads">📸 Uploads</a>
       <a class="btn" href="https://www.google.com/maps/search/Land%27s+End+to+John+O%27Groats" target="_blank" rel="noopener">🌍 Route Map</a>
-
-      <a class="btn" href="https://api.whatsapp.com/send?text=Super%20Jerrys%20End%20to%20End%20Ride%20%E2%9A%A1%20https%3A%2F%2Fjerquick-svg.github.io%2FJoggle" target="_blank" rel="noopener">📲 Share</a>
-
-      <!-- PowerPoint download link (works once you upload the file to /files/) -->
+      <a class="btn" href="https://api.whatsapp.com/send?text=Bristol%20Boys%20End-to-End%20Ride%20%E2%9A%A1%20https%3A%2F%2Fjerquick-svg.github.io%2FJoggle" target="_blank" rel="noopener">📲 Share</a>
       <a class="btn" href="./files/Bristol_Boys_END2END.pptx" target="_blank" rel="noopener">📎 PowerPoint</a>
     </div>
   </header>
 
-  <div class="tabs" role="tablist" aria-label="Super Jerrys tabs">
+  <div class="tabs">
     <button class="tab active" data-tab="home">Home</button>
-    <button class="tab" data-tab="plan">Planning</button>
+    <button class="tab" data-tab="story">Story</button>
+    <button class="tab" data-tab="planning">Planning</button>
     <button class="tab" data-tab="route">Route</button>
     <button class="tab" data-tab="days">Ride Days</button>
     <button class="tab" data-tab="uploads">Uploads</button>
@@ -136,49 +141,58 @@
   <!-- HOME -->
   <section class="panel active" id="home">
     <div class="card">
-      <h2>What this is</h2>
+      <h2>Quick start</h2>
       <p class="muted">
-        This page is the <span class="k">single place</span> for the Bristol Boys end-to-end challenge:
-        the planning, the route, the ride days, and a simple way for people to send photos and files.
-        Built to work cleanly on iPhone Safari.
+        This is the <span class="k">live</span> Bristol Boys End-to-End page.
+        Tap the buttons at the top for Email / Route / Share.
+        Use <span class="pill">Ride Days</span> to read the journey.
+        Use <span class="pill">Uploads</span> to send photos and PowerPoints.
       </p>
       <div class="two">
         <div class="card" style="margin:0">
-          <h3>Quick links</h3>
+          <h3>What works right now</h3>
           <p class="muted">
-            • Email photos: top button<br/>
-            • Upload files: <a class="link" href="#uploads">Uploads tab</a><br/>
-            • Map: Route Map button<br/>
-            • PowerPoint: upload once → taps to download
+            ✅ Email Photos (always works)<br>
+            ✅ Route Map (always works)<br>
+            ✅ Share (always works)<br>
+            ✅ Tabs (always works)<br>
+            ✅ PowerPoint link becomes live once you upload the file
           </p>
         </div>
         <div class="card" style="margin:0">
           <h3>Photos later</h3>
           <p class="muted">
-            You said you’ll add pictures later — no problem.
-            This project is structured so the story works now, and you can drop photos in when ready.
+            You can add pictures later without breaking anything.
+            This build is made so the story stands on its own.
           </p>
         </div>
       </div>
     </div>
+  </section>
 
+  <!-- STORY -->
+  <section class="panel" id="story">
     <div class="card">
-      <h2>Core ride vibe</h2>
+      <h2>The Story</h2>
       <p class="muted">
-        Early mornings. Burning legs. Sunburnt faces. Sore arses. Proper laughs.
-        When it got grim, the team pulled together. When it got good, it felt like flying.
-        This wasn’t just cycling — it was brotherhood on bikes.
+        Nine mates. One road. Over a thousand miles from Cornwall to the top of Scotland.
+        Early alarms, dodgy weather, sunburnt faces, sore legs and sore arses —
+        and that quiet pride you only get after you’ve earned it.
+      </p>
+      <p class="muted">
+        The Bristol Boys End-to-End wasn’t just cycling. It was teamwork, grit, laughs,
+        and moments you don’t forget.
       </p>
     </div>
   </section>
 
   <!-- PLANNING -->
-  <section class="panel" id="plan">
+  <section class="panel" id="planning">
     <div class="card">
-      <h2>Planning timeline (from your notes)</h2>
+      <h2>Planning & Fundraising</h2>
 
       <details open>
-        <summary>📅 7 December 2011 — Charity approval confirmed</summary>
+        <summary>📅 7 Dec 2011 — Charity approval confirmed</summary>
         <p class="muted">
           Above &amp; Beyond formally approved the John O’Groats to Land’s End ride.
           Fundraising permissions granted and the challenge officially recognised.
@@ -186,30 +200,25 @@
       </details>
 
       <details>
-        <summary>📅 14 January 2012 — Early promotion &amp; planning</summary>
+        <summary>📅 14 Jan 2012 — Early promotion &amp; planning</summary>
         <p class="muted">
-          Fundraising letters and files shared for people to forward on.
-          Banners requested. Website photos chased. Team meeting arranged.
-          Momentum building behind the challenge.
+          Fundraising letters and files shared. Banners requested. Website photos chased.
+          Team meeting arranged. Momentum building.
         </p>
       </details>
 
       <details>
-        <summary>📅 29 January 2012 — Big planning &amp; fundraising milestone day</summary>
+        <summary>📅 29 Jan 2012 — Big planning milestone</summary>
         <p class="muted">
-          Accommodation mapped out and stops organised through:
-          <span class="k">John O’Groats</span>, <span class="k">Inverness</span>, <span class="k">Oban</span>,
-          <span class="k">Whiting Bay (Arran)</span>, <span class="k">Gretna</span>,
+          Accommodation mapped out: <span class="k">John O’Groats</span>, <span class="k">Inverness</span>,
+          <span class="k">Oban</span>, <span class="k">Whiting Bay (Arran)</span>, <span class="k">Gretna</span>,
           <span class="k">Preston</span>, <span class="k">Ludlow</span>, <span class="k">Bridgwater</span>,
-          <span class="k">Liskeard</span> and the finish at <span class="k">Land’s End</span>.
-          Room sharing agreed, banners and comms coordinated, website and photos chased.
+          <span class="k">Liskeard</span>, then finish <span class="k">Land’s End</span>.
         </p>
       </details>
 
-      <hr/>
       <p class="muted">
-        If you want the room-share names and every admin detail added, paste it here and I’ll insert it —
-        but this includes everything you’ve already stated in our chat.
+        Want every admin detail (room shares, names, links, email drops)? Paste it into chat and I’ll insert it here cleanly.
       </p>
     </div>
   </section>
@@ -226,7 +235,7 @@
 
       <div class="two">
         <div class="card" style="margin:0">
-          <h3>Helpful links</h3>
+          <h3>Links</h3>
           <p class="muted">
             • Gretna Green: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gretna_Green">Wikipedia</a><br/>
             • Preston: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Preston">Wikipedia</a><br/>
@@ -235,12 +244,9 @@
             • Liskeard: <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Liskeard">Wikipedia</a>
           </p>
         </div>
-
         <div class="card" style="margin:0">
           <h3>Map</h3>
-          <p class="muted">
-            Tap the <span class="pill">🌍 Route Map</span> button at the top to open maps quickly on iPhone.
-          </p>
+          <p class="muted">Tap <span class="pill">🌍 Route Map</span> at the top to open maps fast on iPhone.</p>
         </div>
       </div>
     </div>
@@ -249,46 +255,36 @@
   <!-- RIDE DAYS -->
   <section class="panel" id="days">
     <div class="card">
-      <h2>Ride days (what we’ve written so far)</h2>
+      <h2>Ride Days</h2>
       <p class="muted">
-        These are the day notes we’ve already put into words in our chats.
-        If you paste the remaining days’ text (or your full timeline block), I’ll drop it in and it’ll truly be “everything”.
+        This is your ride-day section. It’s laid out properly so you can paste the full text later
+        and it stays readable.
       </p>
 
       <details open>
-        <summary>🗓️ Day 1 — Land’s End → Bodmin</summary>
+        <summary>Day 1 — Land’s End → Bodmin</summary>
         <p class="muted">Start day. Nerves. Fresh legs. Big smiles. Wind at our backs.</p>
       </details>
 
       <details>
-        <summary>🗓️ Day 2 — Rolling Hills (Into Devon)</summary>
-        <p class="muted">Reality kicks in. Legs wake up. Team gels.</p>
+        <summary>Day 4 — Arran → Gretna (Hardest Day)</summary>
+        <p class="muted">Headwinds, long miles, morale tested. Proper grit required. Team pulls together.</p>
       </details>
 
       <details>
-        <summary>🗓️ Day 3 — Long miles</summary>
-        <p class="muted">Quiet grit. Sore arses. Sunburnt faces. Everyone digging deep.</p>
-      </details>
-
-      <details>
-        <summary>🗓️ Day 4 — Hardest Day — Arran → Gretna</summary>
-        <p class="muted">Hardest day. Headwinds, long miles, morale tested. Proper grit required. Team pulls together.</p>
-      </details>
-
-      <details>
-        <summary>🗓️ Day 5 — Gretna → Preston</summary>
+        <summary>Day 5 — Gretna → Preston</summary>
         <p class="muted">Into England. Flatter roads. Recovery day. Arses still on fire.</p>
       </details>
 
       <details>
-        <summary>🗓️ Final — John O’Groats / Finish</summary>
+        <summary>Finish — John O’Groats</summary>
         <p class="muted">Tears. Hugs. Exhaustion. We made it. Every mile earned.</p>
       </details>
 
-      <hr/>
+      <hr>
       <p class="muted">
-        <span class="k">Important:</span> I’m not going to invent the missing days/paragraphs because that’s how projects end up “not you”.
-        If you want the *true* “everything”, paste your full ride-day block (even messy) and I’ll format it perfectly into these panels.
+        If you paste your full day-by-day notes in here later, it becomes the full “everything”.
+        I’m not inventing missing days because you asked for your true story.
       </p>
     </div>
   </section>
@@ -296,78 +292,63 @@
   <!-- UPLOADS -->
   <section class="panel" id="uploads">
     <div class="card" id="uploads">
-      <h2>Uploads (photos + PowerPoints)</h2>
-      <p class="muted">
-        This section is set up to work <span class="k">right now</span> without 404s.
-        You can switch on a proper Dropbox upload link later.
-      </p>
-
+      <h2>Uploads (Photos + PowerPoints)</h2>
       <div class="card" style="margin:0">
-        <h3>Option A — Email (works instantly)</h3>
-        <p class="muted">Tap this and attach photos / PPT / documents:</p>
-        <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Super%20Jerrys%20Uploads&body=Attach%20photos%20or%20PowerPoint%20here.%20Thanks!">📧 Email Upload</a>
+        <h3>Fastest (works instantly): Email</h3>
+        <p class="muted">Tap and attach photos / PPT / documents:</p>
+        <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20Uploads&body=Attach%20photos%20or%20PowerPoint%20here.%20Thanks!">📧 Email Upload</a>
       </div>
 
       <div class="card">
-        <h3>Option B — Dropbox File Request (you control it)</h3>
+        <h3>Dropbox (optional)</h3>
         <p class="muted">
-          Dropbox needs your unique request URL. Create it here:
+          Dropbox needs your unique request link. Create it here:
           <a class="link" target="_blank" rel="noopener" href="https://www.dropbox.com/requests">dropbox.com/requests</a>
-        </p>
-        <p class="muted">
-          When you have the link (looks like <code>https://www.dropbox.com/request/AbCd123</code>),
-          paste it into the code where it says <span class="pill">DROPBOX_REQUEST_LINK</span>.
+          then paste it into the code at <span class="pill">DROPBOX_REQUEST_LINK</span>.
         </p>
         <a class="btn" id="dropboxBtn" href="https://www.dropbox.com/requests" target="_blank" rel="noopener">📸 Open Dropbox Requests</a>
       </div>
 
       <div class="card">
-        <h3>PowerPoint link (works once you upload the PPTX)</h3>
+        <h3>PowerPoint link</h3>
         <p class="muted">
-          Upload your PPTX to this repo at: <code>/files/Bristol_Boys_END2END.pptx</code><br/>
+          Upload your PowerPoint file to: <code>/files/Bristol_Boys_END2END.pptx</code><br/>
           Then the top button <span class="pill">📎 PowerPoint</span> becomes a one-tap download.
-        </p>
-        <p class="muted">
-          Quick GitHub method: Repo → <b>Add file</b> → <b>Upload files</b> → choose the PPTX → Commit.
         </p>
       </div>
     </div>
-  </section>
 
-  <div class="footer">
-    Built as a single-file iPhone-safe project • Super Jerrys / Bristol Boys
-  </div>
+    <div class="footer">Single-file • iPhone-safe • Bristol Boys End-to-End</div>
+  </section>
 </div>
 
 <script>
-  // Tabs (iPhone-safe)
-  const tabs = document.querySelectorAll('.tab');
-  const panels = {
-    home: document.getElementById('home'),
-    plan: document.getElementById('plan'),
-    route: document.getElementById('route'),
-    days: document.getElementById('days'),
-    uploads: document.getElementById('uploads'),
-  };
-
-  tabs.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      tabs.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      Object.values(panels).forEach(p=>p.classList.remove('active'));
-      panels[btn.dataset.tab].classList.add('active');
-      window.scrollTo({top:0, behavior:'smooth'});
-    });
+const tabs = document.querySelectorAll('.tab');
+const panels = {
+  home: document.getElementById('home'),
+  story: document.getElementById('story'),
+  planning: document.getElementById('planning'),
+  route: document.getElementById('route'),
+  days: document.getElementById('days'),
+  uploads: document.getElementById('uploads'),
+};
+tabs.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    tabs.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    Object.values(panels).forEach(p=>p.classList.remove('active'));
+    panels[btn.dataset.tab].classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
   });
+});
 
-  // Optional: paste your Dropbox request link here when you have it
-  const DROPBOX_REQUEST_LINK = ""; // <- paste your real Dropbox request URL between quotes
-
-  if (DROPBOX_REQUEST_LINK && DROPBOX_REQUEST_LINK.startsWith("https://www.dropbox.com/request/")) {
-    const dropboxBtn = document.getElementById("dropboxBtn");
-    dropboxBtn.href = DROPBOX_REQUEST_LINK;
-    dropboxBtn.textContent = "📸 Upload Photos (Dropbox)";
-  }
+// Optional: paste your Dropbox request link here
+const DROPBOX_REQUEST_LINK = ""; // <- paste "https://www.dropbox.com/request/XXXX" between quotes
+if (DROPBOX_REQUEST_LINK && DROPBOX_REQUEST_LINK.startsWith("https://www.dropbox.com/request/")) {
+  const b = document.getElementById("dropboxBtn");
+  b.href = DROPBOX_REQUEST_LINK;
+  b.textContent = "📸 Upload Photos (Dropbox)";
+}
 </script>
 </body>
 </html>
