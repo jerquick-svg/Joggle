@@ -1,295 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bristol Boys – End to End</title>
+<title>Jeremy Quick Ride — Bristol Boys End-to-End 2012</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2b6cb0">
 
 <style>
 :root{
---bg:#0b1220;
---card:#121c33;
---text:#eaf2ff;
---muted:#a9b6d3;
---accent:#00ffd5;
---border:rgba(255,255,255,.12);
---shadow:0 25px 80px rgba(0,0,0,.55);
+--bg:#eef4fa;
+--card:#ffffffee;
+--text:#1a2a3a;
+--muted:#5a728a;
+--accent:#2b6cb0;
+--border:#cdd9e5;
+--radius:22px;
 }
 
 *{box-sizing:border-box}
 
 body{
-margin:0;padding:28px;
-font-family:-apple-system,BlinkMacSystemFont,Arial;
-background:
-radial-gradient(1400px 700px at 20% 0%,rgba(0,255,213,.18),transparent 55%),
-radial-gradient(1000px 600px at 90% 10%,rgba(110,155,255,.18),transparent 60%),
-var(--bg);
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+font-size:18px;
 color:var(--text);
-line-height:1.7
+background:
+linear-gradient(rgba(238,244,250,.95),rgba(238,244,250,.95)),
+url('A70B52B6-4AE8-4D13-B1EE-AEE7B300DE8D.png') center/cover fixed;
 }
 
-.container{max-width:1100px;margin:auto}
+main{max-width:1100px;margin:auto;padding:20px}
 
-h1{color:var(--accent);font-size:42px;margin:0}
-h2{color:var(--accent)}
-.small{color:var(--muted)}
-
-.actions{margin:20px 0}
-
-.btn{
-display:inline-block;
-background:linear-gradient(135deg,#00ffd5,#00c8ff);
-color:#041018;
-padding:16px 22px;
-border-radius:22px;
-font-weight:900;
-text-decoration:none;
-margin:6px 8px 6px 0
-}
-
-.tabs{margin:25px 0}
-
-.tab{
-background:#1b233b;
-color:#aaa;
-border:none;
-padding:14px 20px;
-border-radius:25px;
-font-weight:900;
-margin-right:8px
-}
-.tab.active{background:#00ffd5;color:black}
-
-.panel{display:none}
-.panel.active{display:block}
+h1{font-size:40px;margin:0;color:var(--accent)}
+.sub{color:var(--muted);margin-bottom:12px}
 
 .card{
 background:var(--card);
-border-radius:26px;
+border-radius:var(--radius);
 padding:26px;
-margin:22px 0;
+margin:18px 0;
 border:1px solid var(--border);
-box-shadow:var(--shadow)
 }
 
-details{
-background:#151d34;
-padding:16px;
-border-radius:18px;
-margin:16px 0
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+
+.tab-btn{
+background:#edf2f7;
+border:1px solid var(--border);
+border-radius:999px;
+padding:12px 20px;
+font-size:16px;
+color:var(--muted);
 }
 
-summary{font-weight:900;cursor:pointer}
+.tab-btn.active{background:var(--accent);color:white}
 
-.footer{text-align:center;color:#889;margin:50px 0}
+.tab{display:none}
+.tab.active{display:block}
 
+.timeline-item{border-bottom:1px solid var(--border);padding:10px 0}
+.photo img{width:100%;border-radius:14px;margin-top:10px}
+small{color:var(--muted)}
+a{color:var(--accent)}
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<h1>🚴 Bristol Boys — End to End</h1>
-<p class="small">Land’s End → John O’Groats</p>
+<main>
 
-<div class="actions">
-<a class="btn" href="mailto:jerquick@icloud.com">📧 Send Photos</a>
-<a class="btn" href="./files/Bristol_Boys_END2END.pptx">📎 PowerPoint</a>
-<a class="btn" href="https://www.google.com/maps/search/Land%27s+End+to+John+O%27Groats" target="_blank">🌍 Route</a>
-</div>
+<h1>Jeremy Quick Ride</h1>
+<div class="sub">Bristol Boys • John O’Groats → Land’s End • 2012</div>
 
 <div class="tabs">
-<button class="tab active" data-tab="home">Home</button>
-<button class="tab" data-tab="story">Story</button>
-<button class="tab" data-tab="planning">Planning</button>
-<button class="tab" data-tab="route">Route</button>
-<button class="tab" data-tab="ride">Ride Days</button>
-<button class="tab" data-tab="uploads">Uploads</button>
+<button class="tab-btn active">Home</button>
+<button class="tab-btn">Story</button>
+<button class="tab-btn">Planning</button>
+<button class="tab-btn">Route</button>
+<button class="tab-btn">Timeline</button>
+<button class="tab-btn">PowerPoint</button>
+<button class="tab-btn">Photos</button>
+<button class="tab-btn">Uploads</button>
 </div>
 
 <!-- HOME -->
-<section id="home" class="panel active">
-
+<div class="tab active">
 <div class="card">
-<h2>The Journey</h2>
-
-<p>Nine mates. One road. Over a thousand miles.</p>
-
-<p>
-Early alarms. Rain in the face. Sunburn on noses.
-Legs screaming. Shared breakfasts. Dark humour.
-Quiet miles where nobody speaks.
-</p>
-
-<p>
-Some days felt easy.  
-Some days felt endless.  
-Nobody quit. Everyone showed up.
-</p>
-
+Nine mates. Nine days. Roughly 960 miles.<br><br>
+Planned carefully. Questioned often.<br>
+Finished properly.<br><br>
+No shortcuts. Nobody quit.
 </div>
-
-</section>
+</div>
 
 <!-- STORY -->
-<section id="story" class="panel">
-
+<div class="tab">
 <div class="card">
-<h2>The Story</h2>
+<b>Day 1 — John O’Groats → Inverness</b><br>
+Photos. Smiles. Nerves. Reality arrives early.<br><br>
 
-<p>
-The Bristol Boys End-to-End wasn’t just cycling.
-It was friendship, grit, laughter and memories earned mile by mile.
-</p>
+<b>Day 2 — Inverness → Oban</b><br>
+Routine forms. Saddles introduce themselves properly.<br><br>
 
-<p>
-This page holds the journey — the planning, the hardest day,
-and the finish that made every ache worth it.
-</p>
+<b>Day 3 — Oban → Whiting Bay (Arran)</b><br>
+Ferry crossing. Stunning scenery. Legs already asking questions.<br><br>
 
+<b>Day 4 — Arran → Gretna</b><br>
+Hardest day. Headwinds. Long miles. Morale tested. Team pulled together.<br><br>
+
+<b>Day 5 — Gretna → Preston</b><br>
+Into England. Flatter roads. “Recovery day” in theory. Arses still on fire.<br><br>
+
+<b>Day 6 — Preston → Ludlow</b><br>
+Everyone had a wobble. Eat, ride, moan, repeat.<br><br>
+
+<b>Day 7 — Ludlow → Bridgwater</b><br>
+Heat. Fatigue. Routine and stubbornness doing the work.<br><br>
+
+<b>Day 8 — Bridgwater → Liskeard</b><br>
+Cornwall hills. Everyone emptying the tank.<br><br>
+
+<b>Day 9 — Liskeard → Land’s End</b><br>
+Final push. Photos at the sign. Relief. Pride. Job done.<br><br>
+
+This ride wasn’t just cycling. It was teamwork, graft, laughs, quiet miles and seeing something through together.<br><br>
+
+— Jeremy
 </div>
-
-</section>
+</div>
 
 <!-- PLANNING -->
-<section id="planning" class="panel">
-
+<div class="tab">
 <div class="card">
-<h2>Planning & Build-Up</h2>
+<b>Charity:</b><br>
+<a href="https://www.aboveandbeyond.org.uk" target="_blank">Above & Beyond</a><br><br>
 
-<details open>
-<summary>December 2011 — Charity approval</summary>
-<p>Ride officially confirmed.</p>
-</details>
+Forms. Accommodation spreadsheets. Room sharing negotiations. Ferry timings. Fundraising letters. Banners. Logistics.<br><br>
 
-<details>
-<summary>January 2012 — Momentum builds</summary>
-<p>Fundraising launched. Accommodation booked. Banners ordered.</p>
-</details>
-
-<details>
-<summary>Route Locked</summary>
-<p>
-John O’Groats → Inverness → Oban → Arran → Gretna → Preston → Ludlow → Bridgwater → Liskeard → Land’s End
-</p>
-</details>
-
+It started months before the wheels rolled.
 </div>
-
-</section>
+</div>
 
 <!-- ROUTE -->
-<section id="route" class="panel">
-
+<div class="tab">
 <div class="card">
-<h2>Route Stops</h2>
-
-<p>
-Start John O’Groats  
-Inverness  
-Oban  
-Whiting Bay (Arran)  
-Gretna  
-Preston  
-Ludlow  
-Bridgwater  
-Liskeard  
-Finish Land’s End
-</p>
-
+John O’Groats → Inverness → Oban → Whiting Bay (Arran) → Gretna → Preston → Ludlow → Bridgwater → Liskeard → Land’s End
+</div>
 </div>
 
-</section>
-
-<!-- RIDE -->
-<section id="ride" class="panel">
-
-<div class="card">
-<h2>The Hardest Day — Arran → Gretna</h2>
-
-<p>
-Headwinds all day. Long climbs. Morale tested.
-</p>
-
-<p>
-Nobody had anything left — but nobody stopped.
-</p>
-
-<p>
-This was the day the ride earned its respect.
-</p>
-
+<!-- TIMELINE -->
+<div class="tab">
+<div class="card" id="timeline"></div>
 </div>
 
+<!-- POWERPOINT -->
+<div class="tab">
 <div class="card">
-<h2>The Finish</h2>
-
-<p>
-John O’Groats.
-</p>
-
-<p>
-Hugs. Tears. Exhaustion.
-Quiet pride.
-</p>
-
-<p>
-Every mile earned.
-</p>
-
+Bristol_Boys_MASTER_BACKGROUND_FORCED.pptx<br>
+Bristol_Boys_END2END_FINAL_with_Background.pptx<br>
+BristolBoys_APP_LIGHT 4
+</div>
 </div>
 
-</section>
+<!-- PHOTOS -->
+<div class="tab">
+<div class="card" id="photos"></div>
+</div>
 
 <!-- UPLOADS -->
-<section id="uploads" class="panel">
-
+<div class="tab">
 <div class="card">
-<h2>Uploads</h2>
-
-<p>Email photos or documents:</p>
-
-<a class="btn" href="mailto:jerquick@icloud.com">📧 Email Upload</a>
-
-<p class="small">Optional Dropbox: https://www.dropbox.com/requests</p>
-
+📧 <a href="mailto:jerquick@icloud.com">jerquick@icloud.com</a><br><br>
+📸 <a href="https://www.dropbox.com/requests" target="_blank">Dropbox Upload</a>
+</div>
 </div>
 
-<div class="card">
-<h2>Thank You</h2>
-
-<p>
-To everyone who donated, supported, followed the journey
-or sent messages along the way — thank you.
-</p>
-
-<p>
-This ride belonged to all of you as much as it did to us.
-</p>
-
-</div>
-
-</section>
-
-<div class="footer">
-Bristol Boys End-to-End • Single-page journey build
-</div>
-
-</div>
+</main>
 
 <script>
-const tabs=document.querySelectorAll('.tab');
-const panels=document.querySelectorAll('.panel');
+const btns=document.querySelectorAll(".tab-btn");
+const tabs=document.querySelectorAll(".tab");
 
-tabs.forEach(t=>{
-t.onclick=()=>{
-tabs.forEach(x=>x.classList.remove('active'));
-panels.forEach(p=>p.classList.remove('active'));
-t.classList.add('active');
-document.getElementById(t.dataset.tab).classList.add('active');
+btns.forEach((b,i)=>b.onclick=()=>{
+btns.forEach(x=>x.classList.remove("active"));
+tabs.forEach(t=>t.classList.remove("active"));
+b.classList.add("active");
+tabs[i].classList.add("active");
 window.scrollTo(0,0);
-}
+});
+
+const timelineData=[
+"2011-12-07 Charity approval confirmed",
+"2012-01-14 Early promotion & planning",
+"2012-01-29 Major planning milestone",
+"2012-06-15 Day 1 John O’Groats → Inverness",
+"2012-06-16 Day 2 Inverness → Oban",
+"2012-06-17 Day 3 Oban → Arran",
+"2012-06-18 Day 4 Arran → Gretna (hardest day)",
+"2012-06-19 Day 5 Gretna → Preston",
+"2012-06-20 Day 6 Preston → Ludlow",
+"2012-06-21 Day 7 Ludlow → Bridgwater",
+"2012-06-22 Day 8 Bridgwater → Liskeard",
+"2012-06-23 Day 9 Liskeard → Land’s End",
+"2012-06-24 Ride complete"
+];
+
+timelineData.forEach(i=>{
+timeline.innerHTML+=`<div class="timeline-item">${i}</div>`;
+});
+
+const photos=[
+"photos/01.jpg",
+"photos/group-shot.jpg",
+"photos/map-route.jpg"
+];
+
+photos.forEach(p=>{
+document.getElementById("photos").innerHTML+=`<img src="${p}" class="photo">`;
 });
 </script>
 
