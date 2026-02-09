@@ -618,13 +618,13 @@ const APP = {
     {date:"2012-06-24", title:"Ride complete", text:"End-to-End completed. Bruised bodies, full hearts. Proper Bristol Boys effort.", tags:["After"]},
   ],
 
-  photos: [
-  {src:"photos/7CB8D831-CD83.jpg", cap:""},
-  {src:"photos/e5b73f8c-f006.jpg", cap:""},
-  {src:"photos/IMG_4921.JPG", cap:""},
-]
-};
-
+  photos: []
+  fetch("photos.json")
+  .then(r => r.json())
+  .then(list => {
+    APP.photos = list;
+    buildPhotos();
+  });
 /* =========================
    SMALL HELPERS
 ========================= */
