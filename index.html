@@ -1,174 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Super Jerrys – End to End Ride</title>
+<meta charset="UTF-8">
+<title>Super Jerrys – End to End</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-:root {
-  --bg: #0b1320;
-  --card: #121b2f;
-  --accent: #4fd1c5;
-  --text: #e6edf3;
-  --muted: #9fb3c8;
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Arial;
+background:#0b1220;
+color:white;
+padding:20px;
 }
 
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(180deg, #060b16, #0b1320);
-  color: var(--text);
+h1{margin-top:0;color:#00ffd5;}
+
+button{
+background:#00ffd5;
+border:none;
+border-radius:25px;
+padding:12px 18px;
+margin:6px;
+font-size:15px;
 }
 
-header {
-  padding: 1.2rem;
-  text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-header p {
-  color: var(--muted);
-  margin-top: .3rem;
+.card{
+background:#121c33;
+border-radius:18px;
+padding:15px;
+margin:15px 0;
 }
 
-.actions {
-  display: flex;
-  gap: .6rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: .8rem;
-}
-.actions a {
-  text-decoration: none;
-  padding: .5rem .8rem;
-  border-radius: 999px;
-  background: var(--card);
-  color: var(--accent);
-  font-size: .9rem;
-  border: 1px solid #1e2a46;
-}
-
-.timeline {
-  max-width: 900px;
-  margin: 1.5rem auto;
-  padding: 0 1rem 3rem;
-}
-
-.day {
-  background: var(--card);
-  border-radius: 14px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #1e2a46;
-}
-
-.day h2 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-.day small {
-  color: var(--muted);
-}
-
-.photos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: .5rem;
-  margin-top: .8rem;
-}
-.photos img {
-  width: 100%;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.notes {
-  margin-top: .6rem;
-  color: #d0dae6;
-  font-size: .95rem;
-}
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: var(--muted);
-  font-size: .85rem;
+.photos img{
+width:45%;
+border-radius:12px;
+margin:5px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🚴 Super Jerrys – End to End</h1>
-  <p>Land’s End to John O’Groats • The full story</p>
+<h1>🚴 Super Jerrys – End to End</h1>
+<p>Land’s End → John O’Groats</p>
 
-  <div class="actions">
-    <a href="mailto:jerquick@icloud.com">📧 Email Photos</a>
-    <a href="#">📸 Upload Drop</a>
-    <a href="#">🌍 Route Map</a>
-    <a href="#">📱 Share</a>
-  </div>
-</header>
+<button onclick="email()">📧 Email Photos</button>
+<button onclick="upload()">📸 Upload Drop</button>
+<button onclick="route()">🌍 Route Map</button>
+<button onclick="share()">📲 Share</button>
 
-<div class="timeline" id="timeline"></div>
+<div class="card">
+<h3>Day 1 – Land’s End → Bodmin</h3>
+<p>Nerves. Fresh legs. Big smiles.</p>
 
-<footer>
-  Built for the ride. Built to last. 💙
-</footer>
+<div class="photos">
+<img src="https://picsum.photos/300/200?1">
+<img src="https://picsum.photos/300/200?2">
+</div>
+</div>
+
+<div class="card">
+<h3>Day 2 – Rolling Hills</h3>
+<p>Reality kicks in. Legs wake up.</p>
+</div>
+
+<div class="card">
+<h3>Hardest Day – Arran → Gretna</h3>
+<p>Headwinds. Long miles. Proper grit.</p>
+</div>
 
 <script>
-/* ===== TIMELINE DATA (edit this only) ===== */
-const timelineData = [
-  {
-    day: "Day 1",
-    date: "Start Day",
-    title: "Land’s End → Bodmin",
-    notes: "Nerves. Fresh legs. Big smiles. Wind at our backs.",
-    photos: [
-      "photos/day1-1.jpg",
-      "photos/day1-2.jpg"
-    ]
-  },
-  {
-    day: "Day 2",
-    date: "Into Devon",
-    title: "Rolling Hills",
-    notes: "Reality kicks in. Legs wake up. Team gels.",
-    photos: []
-  },
-  {
-    day: "Hardest Day",
-    date: "Arran → Gretna",
-    title: "Grit Required",
-    notes: "Headwinds. Long miles. Proper test of character.",
-    photos: []
-  }
-];
 
-/* ===== RENDER ===== */
-const timeline = document.getElementById("timeline");
+function email(){
+window.location.href="mailto:jerquick@icloud.com?subject=Super Jerrys Photos";
+}
 
-timelineData.forEach(d => {
-  const el = document.createElement("div");
-  el.className = "day";
+function upload(){
+window.open("https://www.dropbox.com/request","_blank");
+}
 
-  el.innerHTML = `
-    <h2>${d.day} — ${d.title}</h2>
-    <small>${d.date}</small>
-    <div class="notes">${d.notes}</div>
-    <div class="photos">
-      ${d.photos.map(p => `<img src="${p}" loading="lazy">`).join("")}
-    </div>
-  `;
+function route(){
+window.open("https://www.google.com/maps/search/Lands+End+to+John+O+Groats","_blank");
+}
 
-  timeline.appendChild(el);
+function share(){
+if(navigator.share){
+navigator.share({
+title:"Super Jerrys Ride",
+url:window.location.href
 });
+}else{
+alert("Sharing not supported on this device");
+}
+}
+
 </script>
 
 </body>
