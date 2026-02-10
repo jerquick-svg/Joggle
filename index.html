@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="apple-touch-icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Jeremy Quick Ride — Bristol Boys END2END</title>
@@ -11,1215 +11,199 @@
 
 <style>
 :root{
-  --bg:#0b1220;
-  --card:#121c33;
-  --text:#eaf2ff;
-  --muted:#a9b6d3;
-  --accent:#00ffd5;
-  --accentText:#041018;
-  --border:rgba(255,255,255,.12);
-  --radius:22px;
-  --shadow:0 18px 55px rgba(0,0,0,.45);
-}
-
-:root[data-theme="light"]{
-  --bg:#eef4fa;
-  --card:rgba(255,255,255,.92);
-  --text:#13263a;
-  --muted:#5a728a;
-  --accent:#2b6cb0;
-  --accentText:#ffffff;
-  --border:rgba(10,20,40,.12);
-  --shadow:0 18px 55px rgba(0,0,0,.12);
+--bg:#0b1220;
+--card:#121c33;
+--text:#eaf2ff;
+--muted:#a9b6d3;
+--accent:#00ffd5;
+--accentText:#041018;
+--border:rgba(255,255,255,.12);
+--radius:22px;
+--shadow:0 18px 55px rgba(0,0,0,.45);
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,Arial,system-ui;
-  color:var(--text);
-  background:
-    radial-gradient(1200px 600px at 20% 0%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 55%),
-    radial-gradient(900px 500px at 90% 10%, rgba(110,155,255,.18), transparent 60%),
-    var(--bg);
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Arial;
+background:var(--bg);
+color:var(--text);
 }
 
-main{max-width:1100px;margin:auto;padding:18px 18px 92px}
+main{max-width:1100px;margin:auto;padding:20px 20px 90px}
 
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-
-.offline{
-  display:none;
-  text-align:center;
-  color:#ffb3b3;
-  padding:10px 14px;
-  background:rgba(255,179,179,.10);
-  border-bottom:1px solid rgba(255,179,179,.25);
-}
-
-.hero{text-align:center;padding:28px 10px 12px}
-.hero h1{margin:0;color:var(--accent);font-size:44px;letter-spacing:-.6px}
-.hero p{margin:10px 0 0;color:var(--muted);line-height:1.35}
+.hero{text-align:center;padding:20px}
+.hero h1{color:var(--accent);margin:0}
+.small{color:var(--muted)}
 
 .card{
-  background:linear-gradient(180deg, color-mix(in oklab, var(--card) 85%, transparent), color-mix(in oklab, var(--card) 70%, transparent));
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  padding:20px;
-  margin:16px 0;
+background:#121c33;
+border-radius:20px;
+padding:20px;
+margin:16px 0;
 }
 
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 10px;border-radius:999px;
-  background:color-mix(in oklab, var(--card) 70%, transparent);
-  border:1px solid var(--border);
-  color:var(--muted);
-  font-weight:800;font-size:13px;
+.stats{display:flex;gap:12px;justify-content:center}
+.stat{text-align:center}
+.stat b{color:var(--accent);font-size:22px}
+
+button,.btn{
+border-radius:999px;
+padding:10px 14px;
+border:none;
+background:#222;
+color:white;
+font-weight:700;
 }
 
-.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.stat{
-  background:color-mix(in oklab, var(--card) 70%, transparent);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:10px 16px;
-  min-width:120px;
-  text-align:center;
-}
-.stat b{color:var(--accent);font-size:22px;display:block}
+.btn.primary{background:var(--accent);color:black}
 
-.progressWrap{margin-top:14px}
-.progressBar{
-  height:12px;border-radius:999px;
-  background:color-mix(in oklab, var(--card) 55%, transparent);
-  border:1px solid var(--border);
-  overflow:hidden;
-}
-.progressBar > div{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg, color-mix(in oklab, var(--accent) 100%, #00c8ff), color-mix(in oklab, var(--accent) 60%, #00c8ff));
-}
-
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  margin:8px 8px 0 0;
-  padding:11px 14px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:900;
-  border:1px solid var(--border);
-  background:color-mix(in oklab, var(--card) 60%, transparent);
-  color:var(--text);
-  cursor:pointer;
-}
-.btn.primary{
-  background:linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent) 55%, #00c8ff));
-  color:var(--accentText);
-  border:none;
-}
-.btn:active{transform:scale(.98)}
-
-.tabsTop{
-  position:sticky;top:0;z-index:10;
-  padding:10px 0;
-  background:linear-gradient(to bottom, color-mix(in oklab, var(--bg) 92%, transparent), color-mix(in oklab, var(--bg) 70%, transparent), transparent);
-  backdrop-filter:blur(10px);
-}
-.tabBtns{display:flex;gap:10px;flex-wrap:wrap}
-.tab-btn{
-  appearance:none;border:none;
-  background:color-mix(in oklab, var(--card) 55%, transparent);
-  border:1px solid var(--border);
-  color:var(--muted);
-  border-radius:999px;
-  padding:10px 14px;
-  font-weight:1000;
-}
-.tab-btn.active{
-  background:var(--accent);
-  color:var(--accentText);
-  border-color:transparent;
-}
+.tabs button{margin:4px}
 
 .tab{display:none}
-.tab.active{display:block;animation:fadeIn .18s ease-out}
-@keyframes fadeIn{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
-
-.small{color:var(--muted);font-size:13px;line-height:1.5}
-
-.day{
-  padding:12px 0;
-  border-bottom:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-}
-.day:last-child{border-bottom:none}
-.dayHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.dayTitle{font-weight:1000}
-.dayMeta{color:var(--muted);margin-top:6px;line-height:1.45}
-.chk{transform:scale(1.3);margin-right:10px}
-.placeLinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.iconLink{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 12px;border-radius:999px;
-  border:1px solid var(--border);
-  background:color-mix(in oklab, var(--card) 55%, transparent);
-  color:var(--text);text-decoration:none;font-weight:900;font-size:14px;
-}
-.iconLink:active{transform:scale(.98)}
-
-.timelineItem{
-  padding:14px 0;
-  border-bottom:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-}
-.timelineItem:last-child{border-bottom:none}
-.timelineTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.timelineTitle{font-weight:1000}
-.timelineDate{color:var(--muted);font-size:13px;white-space:nowrap}
-.timelineText{color:var(--muted);margin-top:6px;line-height:1.55}
-
-.grid{
-  display:grid;
-  gap:12px;
-  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-}
-.grid img{
-  width:100%;
-  border-radius:14px;
-  border:1px solid color-mix(in oklab, var(--border) 75%, transparent);
-  cursor:pointer;
-}
-
-.lightbox{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.82);
-  display:none;align-items:center;justify-content:center;
-  z-index:99;
-  padding:18px;
-}
-.lightboxInner{width:min(980px,100%)}
-.lightboxImg{
-  width:100%;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 25px 90px rgba(0,0,0,.6);
-}
-.lightboxBar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
-
-.field{
-  width:100%;
-  padding:12px 12px;
-  border-radius:14px;
-  border:1px solid color-mix(in oklab, var(--border) 90%, transparent);
-  background:color-mix(in oklab, var(--bg) 72%, #000);
-  color:var(--text);
-  outline:none;
-}
-label{display:block;margin:12px 0 6px;color:var(--muted);font-weight:900;font-size:13px}
-textarea.field{min-height:110px;resize:vertical}
-
-.feedItem{
-  padding:14px 0;
-  border-bottom:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-}
-.feedItem:last-child{border-bottom:none}
-.feedTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.feedTitle{font-weight:1000}
-.feedTime{color:var(--muted);font-size:13px;white-space:nowrap}
-.feedText{color:var(--muted);margin-top:6px;line-height:1.55}
-.feedActions{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
-.likeBtn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 12px;border-radius:999px;
-  border:1px solid var(--border);
-  background:color-mix(in oklab, var(--card) 55%, transparent);
-  color:var(--text);
-  font-weight:1000;
-  cursor:pointer;
-}
-.likeBtn.liked{
-  background:color-mix(in oklab, var(--accent) 20%, transparent);
-  border-color:color-mix(in oklab, var(--accent) 45%, transparent);
-}
-.commentBox{margin-top:10px;display:none}
-.commentLine{padding:8px 0;border-bottom:1px solid color-mix(in oklab, var(--border) 70%, transparent)}
-.commentLine:last-child{border-bottom:none}
-
-.toast{
-  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
-  background:color-mix(in oklab, var(--card) 85%, transparent);
-  border:1px solid color-mix(in oklab, var(--border) 90%, transparent);
-  color:var(--text);
-  padding:10px 14px;border-radius:999px;
-  box-shadow:0 22px 70px rgba(0,0,0,.35);
-  z-index:999;display:none;max-width:min(92vw,720px);text-align:center;font-weight:900;
-}
+.tab.active{display:block}
 
 .bottomNav{
-  position:fixed;left:0;right:0;bottom:0;
-  background:color-mix(in oklab, var(--bg) 92%, transparent);
-  border-top:1px solid color-mix(in oklab, var(--border) 90%, transparent);
-  backdrop-filter:blur(12px);
-  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-  z-index:20;
-}
-.bottomNav .wrap{
-  max-width:1100px;margin:auto;
-  display:flex;gap:8px;justify-content:space-between;
-}
-.bottomNav button{
-  flex:1;appearance:none;border:none;
-  background:color-mix(in oklab, var(--card) 45%, transparent);
-  border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  color:var(--muted);
-  padding:10px 8px;border-radius:16px;
-  font-weight:1000;
-}
-.bottomNav button.active{
-  background:color-mix(in oklab, var(--accent) 18%, transparent);
-  border-color:color-mix(in oklab, var(--accent) 28%, transparent);
-  color:var(--text);
+position:fixed;bottom:0;left:0;right:0;
+background:#0b1220;
+display:flex;
+gap:6px;
+padding:10px;
 }
 
-kbd{
-  display:inline-block;
-  padding:2px 6px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  background:color-mix(in oklab, var(--card) 55%, transparent);
-  font-weight:900;
-  font-size:12px;
-  color:var(--text);
-}
+.bottomNav button{flex:1}
 
-@supports not (color: color-mix(in oklab, white, black)){
-  /* fallback for older browsers */
-  .card{background:var(--card)}
-  .pill,.stat,.btn,.tab-btn,.iconLink,.likeBtn{background:rgba(255,255,255,.04)}
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.grid img{width:100%;border-radius:12px}
+
+textarea,input{width:100%;padding:10px;border-radius:10px;background:#000;color:white;border:1px solid #333}
 </style>
 </head>
 
 <body>
 
-<div id="offline" class="offline">No signal — still works. Proper Bristol engineering.</div>
-
 <main>
 
-  <div class="hero">
-    <h1>Jeremy Quick Ride</h1>
-    <p>
-      Bristol Boys •
-      <a href="https://en.wikipedia.org/wiki/John_o%27_Groats" target="_blank" rel="noopener">John O’Groats</a>
-      → <a href="https://en.wikipedia.org/wiki/Land%27s_End" target="_blank" rel="noopener">Land’s End</a>
-      • 2012
-    </p>
+<div class="hero">
+<h1>Jeremy Quick Ride</h1>
+<p class="small">Bristol Boys • John O’Groats → Land’s End • 2012</p>
 
-    <div class="stats">
-      <div class="stat"><b id="miles">0</b><span class="small">Miles</span></div>
-<div class="stat"><b id="days">9</b><span class="small">Days</span></div>
-<div class="stat"><b id="riders">4</b><span class="small">Riders</span></div>
-<div class="stat"><b id="supporters">2</b><span class="small">Supporters</span></div>
-    </div>
+<div class="stats">
+<div class="stat"><b id="miles">960</b><div class="small">Miles</div></div>
+<div class="stat"><b>9</b><div class="small">Days</div></div>
+<div class="stat"><b>4</b><div class="small">Riders</div></div>
+<div class="stat"><b>2</b><div class="small">Support</div></div>
+</div>
 
-    <div class="progressWrap">
-      <div class="small" id="progressText">Progress: 0 / 9 days</div>
-      <div class="progressBar" aria-label="progress"><div id="progressFill"></div></div>
-    </div>
+</div>
 
-    <div style="margin-top:14px">
-      <a class="btn primary" href="#" id="shareBtn">📲 Share</a>
-      <a class="btn" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20End-to-End%20(Photos%20%2B%20Stories)&body=Hi%20Jeremy%2C%0A%0AI%E2%80%99ve%20attached%20photos%2Fnotes%20from%20the%20End-to-End.%0A%0A-%20Name%3A%0A-%20Which%20day%2Fplace%3A%0A-%20Any%20story%3A%0A%0AThanks!">📧 Email photos</a>
-      <a class="btn" href="https://www.dropbox.com/requests" target="_blank" rel="noopener">📸 Dropbox</a>
-    </div>
+<div class="tabs">
+<button onclick="showTab('home')">Home</button>
+<button onclick="showTab('days')">Days</button>
+<button onclick="showTab('photos')">Photos</button>
+<button onclick="showTab('feed')">Feed</button>
+<button onclick="showTab('settings')">Settings</button>
+</div>
 
-    <div class="row" style="justify-content:center;margin-top:10px">
-      <span class="pill">✅ Saves on each phone</span>
-      <span class="pill">🧭 Maps one-tap</span>
-      <span class="pill">📡 Offline caching</span>
-      <span class="pill">🌓 Light/Dark</span>
-    </div>
-  </div>
+<div id="home" class="tab active">
+<div class="card">
+Nine mates. Nine days. Roughly 960 miles.<br><br>
+No shortcuts. Nobody quit.
+</div>
+</div>
 
-  <div class="tabsTop">
-    <div class="tabBtns" id="topTabs">
-      <button class="tab-btn active" data-tab="home">Home</button>
-      <button class="tab-btn" data-tab="daysTab">Days</button>
-      <button class="tab-btn" data-tab="timelineTab">Timeline</button>
-      <button class="tab-btn" data-tab="routeTab">Route</button>
-      <button class="tab-btn" data-tab="photosTab">Photos</button>
-      <button class="tab-btn" data-tab="feedTab">Feed</button>
-      <button class="tab-btn" data-tab="charityTab">Charity</button>
-      <button class="tab-btn" data-tab="uploadsTab">Uploads</button>
-      <button class="tab-btn" data-tab="settingsTab">Settings</button>
-    </div>
-  </div>
+<div id="days" class="tab">
+<div class="card">
+<ul>
+<li>Day 1 — John O’Groats → Inverness</li>
+<li>Day 2 — Inverness → Oban</li>
+<li>Day 3 — Oban → Arran</li>
+<li>Day 4 — Arran → Gretna</li>
+<li>Day 5 — Gretna → Preston</li>
+<li>Day 6 — Preston → Ludlow</li>
+<li>Day 7 — Ludlow → Bridgwater</li>
+<li>Day 8 — Bridgwater → Liskeard</li>
+<li>Day 9 — Liskeard → Land’s End</li>
+</ul>
+</div>
+</div>
 
-  <!-- HOME -->
-  <section class="tab active" id="home">
-    <div class="card">
-      <div style="font-weight:1000;font-size:18px">Welcome</div>
-      <div style="color:var(--muted);margin-top:8px;line-height:1.65">
-        Nine mates. Nine days. Roughly 960 miles.<br>
-        No shortcuts. Nobody quit.<br><br>
-        Tap <b>Days</b> to tick progress, <b>Timeline</b> for the full story, and <b>Feed</b> to post memories (saved on each phone).
-      </div>
+<div id="photos" class="tab">
+<div class="card">
+<div class="grid" id="photosGrid"></div>
+</div>
+</div>
 
-      <div style="margin-top:14px">
-        <button class="btn primary" id="toastTest">✅ Quick test</button>
-        <button class="btn" id="installBtn">➕ Install / Add to Home Screen</button>
-      </div>
+<div id="feed" class="tab">
+<div class="card">
+<textarea id="postText" placeholder="Write memory…"></textarea>
+<br><br>
+<button class="btn primary" onclick="post()">Post</button>
+</div>
 
-      <div class="small" style="margin-top:10px" id="installHelp">
-        iPhone: Share → <b>Add to Home Screen</b>.<br>
-        Android: tap Install when prompted (this app will offer it).
-      </div>
-    </div>
+<div class="card" id="feedList"></div>
+</div>
 
-    <div class="card">
-      <div style="font-weight:1000">Key places (tap)</div>
-      <div class="placeLinks" style="margin-top:12px" id="placeQuickLinks"></div>
-    </div>
-  </section>
-
-  <!-- DAYS -->
-  <section class="tab" id="daysTab">
-    <div class="card">
-      <div style="font-weight:1000">Ride days</div>
-      <div class="small" style="margin-top:6px">Tick boxes save on each person’s phone. Map buttons open Apple Maps on iPhone.</div>
-      <div id="daysList" style="margin-top:10px"></div>
-      <div class="small" style="margin-top:10px">
-        Bristol rule: if you tick the day, you’re allowed to moan about it forever.
-      </div>
-    </div>
-  </section>
-
-  <!-- TIMELINE -->
-  <section class="tab" id="timelineTab">
-    <div class="card">
-      <div style="font-weight:1000">Full timeline</div>
-      <div class="small" style="margin-top:6px">Planning + ride days, sorted by date.</div>
-      <div style="margin-top:10px" id="timelineList"></div>
-    </div>
-  </section>
-
-  <!-- ROUTE -->
-  <section class="tab" id="routeTab">
-    <div class="card">
-      <div style="font-weight:1000">Full route map</div>
-      <div class="small" style="margin-top:6px">Embedded Google map (works best when online).</div>
-      <div style="margin-top:12px">
-        <iframe title="Route map" src="https://www.google.com/maps?q=John%20O%27Groats%20to%20Land%27s%20End&output=embed"></iframe>
-      </div>
-      <div style="margin-top:10px">
-        <a class="btn primary" href="#" id="openRouteApple">🧭 Open in Maps</a>
-        <a class="btn" href="https://maps.google.com/?q=John%20O%27Groats%20to%20Land%27s%20End" target="_blank" rel="noopener">📍 Google Maps</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHOTOS -->
-  <section class="tab" id="photosTab">
-    <div class="card">
-      <div style="font-weight:1000">Photos</div>
-      <div class="small" style="margin-top:6px">Tap a photo → full screen → share it.</div>
-      <div class="grid" id="photosGrid" style="margin-top:12px"></div>
-      <div class="small" style="margin-top:10px">
-        Put images in <kbd>/photos/</kbd> and keep names the same as in the list below.
-      </div>
-    </div>
-  </section>
-
-  <!-- FEED -->
-  <section class="tab" id="feedTab">
-    <div class="card">
-      <div style="font-weight:1000">Post a memory</div>
-      <div class="small" style="margin-top:6px">This is your personal feed (saved on your phone).</div>
-
-      <label for="postText">What happened?</label>
-      <textarea id="postText" class="field" placeholder="e.g. Day 4 headwind nearly made us question our life choices..."></textarea>
-
-      <div style="margin-top:10px">
-        <button class="btn primary" id="postBtn">➕ Post</button>
-        <button class="btn" id="clearFeedBtn">🧹 Clear my feed</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div style="font-weight:1000">Your feed</div>
-      <div class="small" style="margin-top:6px">Likes ❤️ and comments 💬 saved per phone.</div>
-      <div id="feedList" style="margin-top:10px"></div>
-    </div>
-  </section>
-
-  <!-- CHARITY -->
-  <section class="tab" id="charityTab">
-    <div class="card">
-      <div style="font-weight:1000">Charity</div>
-      <div style="margin-top:10px">
-        Supported:
-        <a href="https://www.aboveandbeyond.org.uk" target="_blank" rel="noopener"><b>Above & Beyond</b></a>
-      </div>
-      <div class="small" style="margin-top:8px">
-        For patients, for healing, for Bristol.
-      </div>
-
-      <label for="raisedTotal">Total raised (optional)</label>
-      <input id="raisedTotal" class="field" placeholder="e.g. £12,345" />
-
-      <div style="margin-top:10px">
-        <button class="btn primary" id="saveRaisedBtn">💾 Save total</button>
-      </div>
-
-      <div class="small" style="margin-top:10px">
-        This total displays for <i>you</i> (saved on your phone). If you want it global for everyone, we can hardcode it later.
-      </div>
-    </div>
-
-    <div class="card">
-      <div style="font-weight:1000">Sponsors</div>
-      <div class="small" style="margin-top:6px">Add sponsors / supporters (saved on your phone).</div>
-
-      <label for="sponsorName">Sponsor / Supporter</label>
-      <input id="sponsorName" class="field" placeholder="e.g. Dave’s Tyres, Mum, The Pub, etc." />
-
-      <label for="sponsorNote">Note (optional)</label>
-      <input id="sponsorNote" class="field" placeholder="e.g. Covered ferry, donated £50, fed us pasties..." />
-
-      <div style="margin-top:10px">
-        <button class="btn primary" id="addSponsorBtn">➕ Add sponsor</button>
-        <button class="btn" id="clearSponsorsBtn">🧹 Clear sponsors</button>
-      </div>
-
-      <div style="margin-top:12px" id="sponsorList"></div>
-    </div>
-  </section>
-
-  <!-- UPLOADS -->
-  <section class="tab" id="uploadsTab">
-    <div class="card">
-      <div style="font-weight:1000">Uploads</div>
-      <div style="margin-top:10px">
-        <a class="btn primary" href="mailto:jerquick@icloud.com?subject=Bristol%20Boys%20End-to-End%20Uploads&body=Attach%20photos%20or%20docs%20here.%20Thanks!">📧 Email Upload</a>
-        <a class="btn" href="https://www.dropbox.com/requests" target="_blank" rel="noopener">📸 Dropbox Requests</a>
-      </div>
-      <div class="small" style="margin-top:10px">
-        Tip: photos go in <kbd>/photos/</kbd>. This app will try to cache them for offline use.
-      </div>
-    </div>
-
-    <div class="card">
-      <div style="font-weight:1000">PowerPoints</div>
-      <div class="small" style="margin-top:6px">
-        If you upload PPTX files to a <kbd>/files/</kbd> folder in the repo, link them here.
-      </div>
-      <div style="margin-top:10px">
-        <a class="btn" href="./files/Bristol_Boys_MASTER_BACKGROUND_FORCED.pptx">📎 MASTER_BACKGROUND_FORCED</a>
-        <a class="btn" href="./files/Bristol_Boys_END2END_FINAL_with_Background.pptx">📎 END2END_FINAL</a>
-      </div>
-      <div class="small" style="margin-top:10px">
-        If those buttons 404, it just means the files aren’t in that folder yet.
-      </div>
-    </div>
-  </section>
-
-  <!-- SETTINGS -->
-  <section class="tab" id="settingsTab">
-    <div class="card">
-      <div style="font-weight:1000">Settings</div>
-
-      <div style="margin-top:10px">
-        <button class="btn primary" id="toggleThemeBtn">🌓 Toggle Light / Dark</button>
-        <button class="btn" id="cacheBtn">📡 Refresh offline cache</button>
-      </div>
-
-      <div class="small" style="margin-top:10px">
-        Offline caching uses a Service Worker generated from this file — still “one file” in your repo.
-      </div>
-    </div>
-  </section>
+<div id="settings" class="tab">
+<div class="card">
+Jeremy Quick Ride<br>
+Offline capable<br>
+Install via iPhone Share → Add to Home Screen
+</div>
+</div>
 
 </main>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
-  <div class="lightboxInner">
-    <img class="lightboxImg" id="lightboxImg" alt="Photo">
-    <div class="lightboxBar">
-      <button class="btn primary" id="sharePhotoBtn">📲 Share photo</button>
-      <button class="btn" id="closePhotoBtn">✖ Close</button>
-    </div>
-    <div class="small" id="lightboxCaption" style="margin-top:10px"></div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<div class="bottomNav" aria-label="Bottom navigation">
-  <div class="wrap">
-    <button data-tab="home" class="active">🏠 Home</button>
-    <button data-tab="daysTab">✅ Days</button>
-    <button data-tab="timelineTab">🗓 Timeline</button>
-    <button data-tab="feedTab">📰 Feed</button>
-    <button data-tab="settingsTab">⚙️</button>
-  </div>
+<div class="bottomNav">
+<button onclick="showTab('home')">Home</button>
+<button onclick="showTab('days')">Days</button>
+<button onclick="showTab('photos')">Photos</button>
+<button onclick="showTab('feed')">Feed</button>
+<button onclick="showTab('settings')">⚙️</button>
 </div>
 
 <script>
-/* =========================
-   CONFIG / DATA
-========================= */
-const APP = {
-  milesTotal: 960,
-daysTotal: 9,
-ridersTotal: 4,
-supportersTotal: 2,
-
-  places: [
-    {name:"John O’Groats", wiki:"https://en.wikipedia.org/wiki/John_o%27_Groats", q:"John O' Groats"},
-    {name:"Inverness", wiki:"https://en.wikipedia.org/wiki/Inverness", q:"Inverness"},
-    {name:"Oban", wiki:"https://en.wikipedia.org/wiki/Oban", q:"Oban Scotland"},
-    {name:"Arran", wiki:"https://en.wikipedia.org/wiki/Isle_of_Arran", q:"Isle of Arran"},
-    {name:"Gretna", wiki:"https://en.wikipedia.org/wiki/Gretna,_Scotland", q:"Gretna Scotland"},
-    {name:"Preston", wiki:"https://en.wikipedia.org/wiki/Preston,_Lancashire", q:"Preston Lancashire"},
-    {name:"Ludlow", wiki:"https://en.wikipedia.org/wiki/Ludlow", q:"Ludlow UK"},
-    {name:"Bridgwater", wiki:"https://en.wikipedia.org/wiki/Bridgwater", q:"Bridgwater"},
-    {name:"Liskeard", wiki:"https://en.wikipedia.org/wiki/Liskeard", q:"Liskeard"},
-    {name:"Land’s End", wiki:"https://en.wikipedia.org/wiki/Land%27s_End", q:"Land's End Cornwall"},
-  ],
-
-  days: [
-    {n:1, from:"John O’Groats", to:"Inverness", fromWiki:"https://en.wikipedia.org/wiki/John_o%27_Groats", toWiki:"https://en.wikipedia.org/wiki/Inverness", fromQ:"John O' Groats", toQ:"Inverness", note:"Start day. Nerves, photos, proper Scotland welcome."},
-    {n:2, from:"Inverness", to:"Oban", fromWiki:"https://en.wikipedia.org/wiki/Inverness", toWiki:"https://en.wikipedia.org/wiki/Oban", fromQ:"Inverness", toQ:"Oban Scotland", note:"Routine forms. Saddles stop being polite."},
-    {n:3, from:"Oban", to:"Arran", fromWiki:"https://en.wikipedia.org/wiki/Oban", toWiki:"https://en.wikipedia.org/wiki/Isle_of_Arran", fromQ:"Oban Scotland", toQ:"Isle of Arran", note:"Ferry / island roads. Progress feels real."},
-    {n:4, from:"Arran", to:"Gretna", fromWiki:"https://en.wikipedia.org/wiki/Isle_of_Arran", toWiki:"https://en.wikipedia.org/wiki/Gretna,_Scotland", fromQ:"Isle of Arran", toQ:"Gretna Scotland", note:"Hardest day. Headwinds. Grit. Team pulls together."},
-    {n:5, from:"Gretna", to:"Preston", fromWiki:"https://en.wikipedia.org/wiki/Gretna,_Scotland", toWiki:"https://en.wikipedia.org/wiki/Preston,_Lancashire", fromQ:"Gretna Scotland", toQ:"Preston Lancashire", note:"Into England. ‘Recovery day’ in theory. Arses still on fire."},
-    {n:6, from:"Preston", to:"Ludlow", fromWiki:"https://en.wikipedia.org/wiki/Preston,_Lancashire", toWiki:"https://en.wikipedia.org/wiki/Ludlow", fromQ:"Preston Lancashire", toQ:"Ludlow UK", note:"Long miles south. Eat, ride, moan, repeat."},
-    {n:7, from:"Ludlow", to:"Bridgwater", fromWiki:"https://en.wikipedia.org/wiki/Ludlow", toWiki:"https://en.wikipedia.org/wiki/Bridgwater", fromQ:"Ludlow UK", toQ:"Bridgwater", note:"Heat, fatigue, tempers short. Somerset close but not close enough."},
-    {n:8, from:"Bridgwater", to:"Liskeard", fromWiki:"https://en.wikipedia.org/wiki/Bridgwater", toWiki:"https://en.wikipedia.org/wiki/Liskeard", fromQ:"Bridgwater", toQ:"Liskeard", note:"Cornwall hills. Everyone emptying the tank."},
-    {n:9, from:"Liskeard", to:"Land’s End", fromWiki:"https://en.wikipedia.org/wiki/Liskeard", toWiki:"https://en.wikipedia.org/wiki/Land%27s_End", fromQ:"Liskeard", toQ:"Land's End Cornwall", note:"Final push. Photos at the sign. Relief. Pride. Job done."},
-  ],
-
-  timeline: [
-    {date:"2011-12-07", title:"Charity approval confirmed", text:"Above & Beyond formally approved the ride. Fundraising permissions granted and the challenge officially recognised.", tags:["Planning","Charity"]},
-    {date:"2012-01-14", title:"Early promotion & planning", text:"Fundraising letters shared, banners requested, website photos chased, team meeting arranged.", tags:["Planning","Fundraising"]},
-    {date:"2012-01-29", title:"Major planning milestone", text:"Accommodation mapped out for all stops. Room sharing agreed. Logistics tightened up.", tags:["Planning","Logistics"]},
-    {date:"2012-06-15", title:"Day 1 — John O’Groats → Inverness", text:"Nerves, excitement, photos at the sign. Reality sets in early.", tags:["Ride Day"]},
-    {date:"2012-06-16", title:"Day 2 — Inverness → Oban", text:"Big climbs, big scenery. Saddles doing their worst.", tags:["Ride Day"]},
-    {date:"2012-06-17", title:"Day 3 — Oban → Arran", text:"Ferry + island roads. Rollers all day.", tags:["Ride Day"]},
-    {date:"2012-06-18", title:"Day 4 — Arran → Gretna", text:"Hardest day. Headwinds, long miles, morale tested. Team pulls together.", tags:["Ride Day","Hard"]},
-    {date:"2012-06-19", title:"Day 5 — Gretna → Preston", text:"Flatter roads. Recovery day in theory… arses still on fire.", tags:["Ride Day"]},
-    {date:"2012-06-20", title:"Day 6 — Preston → Ludlow", text:"Miles ticked off. Routine established.", tags:["Ride Day"]},
-    {date:"2012-06-21", title:"Day 7 — Ludlow → Bridgwater", text:"Heat + fatigue. Somerset still makes you earn it.", tags:["Ride Day"]},
-    {date:"2012-06-22", title:"Day 8 — Bridgwater → Liskeard", text:"Cornwall hills hit hard. Everyone emptying the tank.", tags:["Ride Day"]},
-    {date:"2012-06-23", title:"Day 9 — Liskeard → Land’s End", text:"Final push. Emotion, relief, pride. Photos at the sign.", tags:["Ride Day","Finish"]},
-    {date:"2012-06-24", title:"Ride complete", text:"End-to-End completed. Bruised bodies, full hearts. Proper Bristol Boys effort.", tags:["After"]},
-  ],
-
-  photos: []
-  fetch("photos.json")
-  .then(r => r.json())
-  .then(list => {
-    APP.photos = list;
-    buildPhotos();
-  });
-/* =========================
-   SMALL HELPERS
-========================= */
-const $ = (sel)=>document.querySelector(sel);
-const $$ = (sel)=>Array.from(document.querySelectorAll(sel));
-const store = {
-  get:(k,def)=>{ try{ const v=localStorage.getItem(k); return v===null?def:JSON.parse(v);}catch{ return def; } },
-  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v)),
-  del:(k)=>localStorage.removeItem(k)
-};
-function toast(msg){
-  const t=$("#toast");
-  t.textContent=msg;
-  t.style.display="block";
-  clearTimeout(toast._t);
-  toast._t=setTimeout(()=>t.style.display="none",1800);
-}
-function isIOS(){
-  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-}
-function mapsLink(from,to){
-  // iOS prefers maps://, others go to google maps
-  const q = encodeURIComponent(`${from} to ${to}`);
-  if(isIOS()) return `maps://?q=${q}`;
-  return `https://www.google.com/maps?q=${q}`;
-}
-function placePinLink(q){
-  const qs = encodeURIComponent(q);
-  if(isIOS()) return `maps://?q=${qs}`;
-  return `https://www.google.com/maps?q=${qs}`;
+function showTab(id){
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
 
-/* =========================
-   THEME (6)
-========================= */
-(function initTheme(){
-  const t = store.get("theme","dark");
-  document.documentElement.setAttribute("data-theme", t);
-})();
+const PHOTOS=[
+"photos/1.jpg",
+"photos/2.jpg",
+"photos/3.jpg"
+];
 
-$("#toggleThemeBtn").addEventListener("click", ()=>{
-  const cur = document.documentElement.getAttribute("data-theme") || "dark";
-  const next = cur==="dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", next);
-  store.set("theme", next);
-  toast(`Theme: ${next}`);
-});
+document.getElementById("photosGrid").innerHTML =
+PHOTOS.map(p=>`<img src="${p}">`).join("");
 
-/* =========================
-   STATS ANIMATION
-========================= */
-function countUp(id,target){
-  let n=0;const el=document.getElementById(id);
-  const step=Math.max(1,Math.ceil(target/40));
-  const t=setInterval(()=>{
-    n+=step;
-    if(n>=target){n=target;clearInterval(t);}
-    el.textContent=n;
-  },25);
-}
-countUp("miles",APP.milesTotal);
-countUp("days",APP.daysTotal);
-countUp("riders",APP.ridersTotal);
+const FEED_KEY="jq_feed";
 
-/* =========================
-   TABS + BOTTOM NAV
-========================= */
-function setTab(tabId){
-  $$(".tab-btn").forEach(b=>b.classList.toggle("active", b.dataset.tab===tabId));
-  $$(".tab").forEach(s=>s.classList.toggle("active", s.id===tabId));
-  $$(".bottomNav button").forEach(b=>b.classList.toggle("active", b.dataset.tab===tabId));
-  window.scrollTo({top:0, behavior:"smooth"});
-}
-$$(".tab-btn").forEach(b=>b.addEventListener("click", ()=>setTab(b.dataset.tab)));
-$$(".bottomNav button").forEach(b=>b.addEventListener("click", ()=>setTab(b.dataset.tab)));
-
-/* =========================
-   OFFLINE BANNER
-========================= */
-function online(){ $("#offline").style.display="none"; }
-function offline(){ $("#offline").style.display="block"; }
-window.addEventListener("online",online);
-window.addEventListener("offline",offline);
-if(!navigator.onLine) offline();
-
-/* =========================
-   PLACES QUICK LINKS
-========================= */
-(function buildPlaces(){
-  const wrap=$("#placeQuickLinks");
-  wrap.innerHTML = APP.places.map(p=>`
-    <a class="iconLink" href="${p.wiki}" target="_blank" rel="noopener">📚 ${p.name}</a>
-    <a class="iconLink" href="${placePinLink(p.q)}" target="_blank" rel="noopener">📍 Map</a>
-  `).join("");
-})();
-
-/* =========================
-   DAYS LIST + PROGRESS (auto-save)
-========================= */
-function getDayKey(n){ return `day_${n}`; }
-function getDoneCount(){
-  let c=0;
-  APP.days.forEach(d=>{ if(store.get(getDayKey(d.n),0)===1) c++; });
-  return c;
-}
-function renderProgress(){
-  const done = getDoneCount();
-  $("#progressText").textContent = `Progress: ${done} / ${APP.daysTotal} days`;
-  $("#progressFill").style.width = `${Math.round((done/APP.daysTotal)*100)}%`;
-}
-(function buildDays(){
-  const list=$("#daysList");
-  list.innerHTML = APP.days.map(d=>{
-    const checked = store.get(getDayKey(d.n),0)===1 ? "checked" : "";
-    const nav = mapsLink(d.fromQ, d.toQ);
-    return `
-      <div class="day">
-        <div class="dayHead">
-          <div>
-            <label style="display:flex;align-items:flex-start;gap:10px;margin:0">
-              <input class="chk" type="checkbox" data-day="${d.n}" ${checked}>
-              <div>
-                <div class="dayTitle">Day ${d.n} — ${d.from} → ${d.to}</div>
-                <div class="dayMeta">${d.note}</div>
-              </div>
-            </label>
-
-            <div class="placeLinks">
-              <a class="iconLink" href="${d.fromWiki}" target="_blank" rel="noopener">📚 ${d.from}</a>
-              <a class="iconLink" href="${d.toWiki}" target="_blank" rel="noopener">📚 ${d.to}</a>
-              <a class="iconLink" href="${nav}" target="_blank" rel="noopener">🧭 Navigate</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join("");
-
-  $$("#daysList input[type=checkbox]").forEach(cb=>{
-    cb.addEventListener("change", ()=>{
-      store.set(getDayKey(Number(cb.dataset.day)), cb.checked ? 1 : 0);
-      renderProgress();
-      addFeedEvent(cb.checked ? `✅ Completed Day ${cb.dataset.day}` : `↩️ Unchecked Day ${cb.dataset.day}`);
-    });
-  });
-
-  renderProgress();
-})();
-
-/* =========================
-   TIMELINE (3)
-========================= */
-(function buildTimeline(){
-  const wrap=$("#timelineList");
-  const items=[...APP.timeline].sort((a,b)=>a.date.localeCompare(b.date));
-  wrap.innerHTML = items.map(it=>{
-    const tags = (it.tags||[]).map(t=>`<span class="pill">${t}</span>`).join(" ");
-    return `
-      <div class="timelineItem">
-        <div class="timelineTop">
-          <div class="timelineTitle">${it.title}</div>
-          <div class="timelineDate">${it.date}</div>
-        </div>
-        <div class="timelineText">${it.text}</div>
-        <div class="row" style="margin-top:10px">${tags}</div>
-      </div>
-    `;
-  }).join("");
-})();
-
-/* =========================
-   ROUTE OPEN
-========================= */
-$("#openRouteApple").addEventListener("click", (e)=>{
-  e.preventDefault();
-  const url = mapsLink("John O' Groats", "Land's End Cornwall");
-  window.open(url, "_blank");
-});
-
-/* =========================
-   PHOTOS + LIGHTBOX + SHARE
-========================= */
-(function buildPhotos(){
-  const g=$("#photosGrid");
-  g.innerHTML = APP.photos.map((p,i)=>`
-    <img src="${p.src}" alt="${p.cap}" data-i="${i}" loading="lazy">
-  `).join("");
-})();
-const lb=$("#lightbox");
-const lbImg=$("#lightboxImg");
-const lbCap=$("#lightboxCaption");
-let currentPhotoSrc="";
-$("#photosGrid").addEventListener("click",(e)=>{
-  const img=e.target.closest("img");
-  if(!img) return;
-  const i=Number(img.dataset.i);
-  const p=APP.photos[i];
-  currentPhotoSrc=p.src;
-  lbImg.src=p.src;
-  lbCap.textContent=p.cap;
-  lb.style.display="flex";
-});
-$("#closePhotoBtn").addEventListener("click",()=>lb.style.display="none");
-lb.addEventListener("click",(e)=>{ if(e.target===lb) lb.style.display="none"; });
-
-$("#sharePhotoBtn").addEventListener("click", async ()=>{
-  try{
-    if(navigator.share){
-      await navigator.share({ title:"Jeremy Quick Ride photo", text:"Bristol Boys END2END 2012", url: location.href });
-      toast("Shared");
-    }else{
-      toast("Sharing not supported — copy link from address bar");
-    }
-  }catch{}
-});
-
-/* =========================
-   FEED (1) — posts + likes + comments
-========================= */
-const FEED_KEY="feed_posts_v1";
-function loadFeed(){ return store.get(FEED_KEY, []); }
-function saveFeed(posts){ store.set(FEED_KEY, posts); }
-
-function addFeedEvent(title){
-  const posts=loadFeed();
-  posts.unshift({
-    id: crypto?.randomUUID?.() || String(Date.now()+Math.random()),
-    title,
-    text:"",
-    ts: Date.now(),
-    likes: 0,
-    liked: false,
-    comments: []
-  });
-  saveFeed(posts);
-  renderFeed();
+function loadFeed(){
+return JSON.parse(localStorage.getItem(FEED_KEY)||"[]");
 }
 
-function timeStr(ts){
-  try{ return new Date(ts).toLocaleString(); }catch{ return ""; }
+function saveFeed(f){
+localStorage.setItem(FEED_KEY,JSON.stringify(f));
 }
 
-function renderFeed(){
-  const posts=loadFeed();
-  const wrap=$("#feedList");
-  if(!posts.length){
-    wrap.innerHTML=`<div class="small">No posts yet. Add one above 👆</div>`;
-    return;
-  }
-  wrap.innerHTML = posts.map((p,idx)=>`
-    <div class="feedItem" data-idx="${idx}">
-      <div class="feedTop">
-        <div class="feedTitle">${escapeHtml(p.title || "Post")}</div>
-        <div class="feedTime">${timeStr(p.ts)}</div>
-      </div>
-      ${p.text ? `<div class="feedText">${escapeHtml(p.text)}</div>` : ``}
-
-      <div class="feedActions">
-        <button class="likeBtn ${p.liked?'liked':''}" data-act="like">
-          ❤️ Like <span class="small">(${p.likes||0})</span>
-        </button>
-        <button class="likeBtn" data-act="toggleComments">💬 Comments <span class="small">(${(p.comments||[]).length})</span></button>
-        <button class="likeBtn" data-act="delete">🗑 Delete</button>
-      </div>
-
-      <div class="commentBox">
-        <label>Add a comment</label>
-        <input class="field" data-act="commentInput" placeholder="Type comment…">
-        <button class="btn primary" data-act="addComment">➕ Add</button>
-
-        <div style="margin-top:10px">
-          ${(p.comments||[]).map((c)=>`<div class="commentLine"><span class="small">${timeStr(c.ts)}</span><br>${escapeHtml(c.text)}</div>`).join("") || `<div class="small">No comments yet.</div>`}
-        </div>
-      </div>
-    </div>
-  `).join("");
-
-  // wire comment toggle display (per render)
-  wrap.querySelectorAll('[data-act="toggleComments"]').forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const item=btn.closest(".feedItem");
-      const box=item.querySelector(".commentBox");
-      box.style.display = (box.style.display==="block") ? "none" : "block";
-    });
-  });
-
-  wrap.querySelectorAll('[data-act="like"]').forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const idx=Number(btn.closest(".feedItem").dataset.idx);
-      const posts=loadFeed();
-      const p=posts[idx];
-      p.liked = !p.liked;
-      p.likes = (p.likes||0) + (p.liked ? 1 : -1);
-      if(p.likes<0) p.likes=0;
-      saveFeed(posts);
-      renderFeed();
-    });
-  });
-
-  wrap.querySelectorAll('[data-act="delete"]').forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const idx=Number(btn.closest(".feedItem").dataset.idx);
-      const posts=loadFeed();
-      posts.splice(idx,1);
-      saveFeed(posts);
-      renderFeed();
-      toast("Deleted");
-    });
-  });
-
-  wrap.querySelectorAll('[data-act="addComment"]').forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const item=btn.closest(".feedItem");
-      const idx=Number(item.dataset.idx);
-      const inp=item.querySelector('[data-act="commentInput"]');
-      const txt=(inp.value||"").trim();
-      if(!txt) return toast("Write a comment first");
-      const posts=loadFeed();
-      posts[idx].comments = posts[idx].comments || [];
-      posts[idx].comments.unshift({ text: txt, ts: Date.now() });
-      saveFeed(posts);
-      renderFeed();
-      // reopen comments after rerender
-      setTimeout(()=>{
-        const newItem=$("#feedList").querySelector(`.feedItem[data-idx="${idx}"]`);
-        if(newItem) newItem.querySelector(".commentBox").style.display="block";
-      },0);
-    });
-  });
+function render(){
+const f=loadFeed();
+document.getElementById("feedList").innerHTML=
+f.map(x=>`<div style="margin-bottom:10px">${x}</div>`).join("");
 }
 
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function post(){
+const t=document.getElementById("postText").value.trim();
+if(!t)return;
+const f=loadFeed();
+f.unshift(t);
+saveFeed(f);
+document.getElementById("postText").value="";
+render();
 }
 
-$("#postBtn").addEventListener("click", ()=>{
-  const text=($("#postText").value||"").trim();
-  if(!text) return toast("Write something first");
-  const posts=loadFeed();
-  posts.unshift({
-    id: crypto?.randomUUID?.() || String(Date.now()+Math.random()),
-    title: (store.get("meName","") || "Someone") + " posted",
-    text,
-    ts: Date.now(),
-    likes: 0,
-    liked: false,
-    comments: []
-  });
-  saveFeed(posts);
-  $("#postText").value="";
-  renderFeed();
-  toast("Posted");
-});
-
-$("#clearFeedBtn").addEventListener("click", ()=>{
-  store.set(FEED_KEY, []);
-  renderFeed();
-  toast("Cleared");
-});
-
-renderFeed();
-
-/* =========================
-   CHARITY (2) — total raised saved per phone
-========================= */
-(function initRaised(){
-  const v = store.get("raisedTotal","");
-  $("#raisedTotal").value = v;
-})();
-$("#saveRaisedBtn").addEventListener("click", ()=>{
-  store.set("raisedTotal", $("#raisedTotal").value.trim());
-  toast("Saved total");
-});
-
-/* =========================
-   SPONSORS (2) — local list
-========================= */
-const SPONSOR_KEY="sponsors_v1";
-function loadSponsors(){ return store.get(SPONSOR_KEY, []); }
-function saveSponsors(v){ store.set(SPONSOR_KEY, v); }
-
-function renderSponsors(){
-  const list=$("#sponsorList");
-  const s=loadSponsors();
-  if(!s.length){
-    list.innerHTML = `<div class="small">No sponsors added yet.</div>`;
-    return;
-  }
-  list.innerHTML = s.map((x,i)=>`
-    <div class="timelineItem">
-      <div class="timelineTop">
-        <div class="timelineTitle">${escapeHtml(x.name)}</div>
-        <div class="timelineDate">#${i+1}</div>
-      </div>
-      ${x.note ? `<div class="timelineText">${escapeHtml(x.note)}</div>` : `<div class="small">—</div>`}
-      <div style="margin-top:10px">
-        <button class="btn" data-i="${i}" data-act="delSponsor">🗑 Remove</button>
-      </div>
-    </div>
-  `).join("");
-
-  list.querySelectorAll('[data-act="delSponsor"]').forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const i=Number(btn.dataset.i);
-      const s=loadSponsors();
-      s.splice(i,1);
-      saveSponsors(s);
-      renderSponsors();
-      toast("Removed");
-    });
-  });
-}
-$("#addSponsorBtn").addEventListener("click", ()=>{
-  const name = ($("#sponsorName").value||"").trim();
-  const note = ($("#sponsorNote").value||"").trim();
-  if(!name) return toast("Add a sponsor name");
-  const s=loadSponsors();
-  s.unshift({name, note, ts: Date.now()});
-  saveSponsors(s);
-  $("#sponsorName").value="";
-  $("#sponsorNote").value="";
-  renderSponsors();
-  toast("Added");
-});
-$("#clearSponsorsBtn").addEventListener("click", ()=>{
-  saveSponsors([]);
-  renderSponsors();
-  toast("Cleared");
-});
-renderSponsors();
-
-/* =========================
-   SHARE BUTTON
-========================= */
-$("#shareBtn").addEventListener("click", async (e)=>{
-  e.preventDefault();
-  try{
-    if(navigator.share){
-      await navigator.share({ title: document.title, text:"Jeremy Quick Ride — Bristol Boys END2END 2012", url: location.href });
-      toast("Shared");
-    }else{
-      await navigator.clipboard?.writeText(location.href);
-      toast("Link copied");
-    }
-  }catch{
-    toast("Copy link from address bar");
-  }
-});
-
-/* =========================
-   INSTALL / A2HS (4)
-========================= */
-let deferredPrompt=null;
-window.addEventListener("beforeinstallprompt",(e)=>{
-  e.preventDefault();
-  deferredPrompt=e;
-  // change button text when install is available
-  $("#installBtn").textContent="➕ Install App";
-});
-$("#installBtn").addEventListener("click", async ()=>{
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    const choice = await deferredPrompt.userChoice.catch(()=>null);
-    deferredPrompt=null;
-    toast(choice?.outcome==="accepted" ? "Installed" : "Install dismissed");
-    return;
-  }
-  // iOS helper
-  if(isIOS()){
-    toast("iPhone: Share → Add to Home Screen");
-  }else{
-    toast("If install option appears, tap Install");
-  }
-});
-
-/* =========================
-   SERVICE WORKER (5) — generated from this file
-   - caches index + /photos/* list
-   - works with GitHub Pages (scope is folder)
-========================= */
-async function registerInlineSW(){
-  if(!("serviceWorker" in navigator)) return;
-
-  // Avoid re-register loops in some browsers
-  if(window.__swRegistered) return;
-  window.__swRegistered=true;
-
-  const cacheName="jqride-cache-v1";
-  const photos = APP.photos.map(p=>new URL(p.src, location.href).pathname);
-
-  const swCode = `
-    const CACHE = ${JSON.stringify(cacheName)};
-    const CORE = [
-      new URL(location.href).pathname,
-      "./",
-      ${photos.map(p=>JSON.stringify(p)).join(",")}
-    ].filter(Boolean);
-
-    self.addEventListener("install", (e)=>{
-      e.waitUntil((async ()=>{
-        const c = await caches.open(CACHE);
-        await c.addAll(CORE).catch(()=>{});
-        self.skipWaiting();
-      })());
-    });
-
-    self.addEventListener("activate", (e)=>{
-      e.waitUntil((async ()=>{
-        const keys = await caches.keys();
-        await Promise.all(keys.map(k => k===CACHE ? null : caches.delete(k)));
-        self.clients.claim();
-      })());
-    });
-
-    self.addEventListener("fetch", (e)=>{
-      const req = e.request;
-      if(req.method !== "GET") return;
-      e.respondWith((async ()=>{
-        const cache = await caches.open(CACHE);
-        const cached = await cache.match(req);
-        if(cached) return cached;
-        try{
-          const fresh = await fetch(req);
-          // cache same-origin only
-          const url = new URL(req.url);
-          if(url.origin === location.origin){
-            cache.put(req, fresh.clone()).catch(()=>{});
-          }
-          return fresh;
-        }catch{
-          // fallback to index for navigations
-          if(req.mode === "navigate"){
-            return cache.match(new URL(location.href).pathname) || cached;
-          }
-          return cached || Response.error();
-        }
-      })());
-    });
-
-    self.addEventListener("message",(e)=>{
-      if(e.data && e.data.type==="CACHE_REFRESH"){
-        e.waitUntil((async ()=>{
-          const c = await caches.open(CACHE);
-          await c.addAll(CORE).catch(()=>{});
-        })());
-      }
-    });
-  `;
-
-  const blob = new Blob([swCode], {type:"text/javascript"});
-  const swUrl = URL.createObjectURL(blob);
-
-  try{
-    const reg = await navigator.serviceWorker.register(swUrl, {scope:"./"});
-    // release blob URL later
-    setTimeout(()=>URL.revokeObjectURL(swUrl), 10_000);
-    reg.update?.();
-  }catch{
-    // ignore
-  }
-}
-registerInlineSW();
-
-$("#cacheBtn").addEventListener("click", async ()=>{
-  if(!navigator.serviceWorker?.controller){
-    toast("SW not active yet — refresh once");
-    return;
-  }
-  navigator.serviceWorker.controller.postMessage({type:"CACHE_REFRESH"});
-  toast("Refreshing offline cache…");
-});
-
-/* =========================
-   QUICK TEST
-========================= */
-$("#toastTest").addEventListener("click", ()=>toast("✅ Working. Proper job."));
-
-/* =========================
-   Also store viewer name (used in feed title)
-========================= */
-(function initNameMemory(){
-  // If you later add a name box, this keeps compatibility.
-  const n = store.get("meName","");
-  if(!n) store.set("meName","Jeremy"); // safe default on your phone; others can change later if you add a field
-})();
-
-/* =========================
-   Default Apple Maps open for full route
-========================= */
-$("#openRouteApple").addEventListener("click",(e)=>{
-  e.preventDefault();
-  window.open(mapsLink("John O' Groats","Land's End Cornwall"), "_blank");
-});
+render();
 </script>
 
 </body>
