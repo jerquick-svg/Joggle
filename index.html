@@ -1,209 +1,163 @@
 <!doctype html>
 <html lang="en">
 <head>
-<link rel="apple-touch-icon" href="icon.png">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Jeremy Quick Ride — Bristol Boys END2END</title>
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0b1220">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jeremy Quick Ride</title>
 
 <style>
-:root{
---bg:#0b1220;
---card:#121c33;
---text:#eaf2ff;
---muted:#a9b6d3;
---accent:#00ffd5;
---accentText:#041018;
---border:rgba(255,255,255,.12);
---radius:22px;
---shadow:0 18px 55px rgba(0,0,0,.45);
-}
-
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,Arial;
-background:var(--bg);
-color:var(--text);
-}
-
-main{max-width:1100px;margin:auto;padding:20px 20px 90px}
-
-.hero{text-align:center;padding:20px}
-.hero h1{color:var(--accent);margin:0}
-.small{color:var(--muted)}
-
-.card{
-background:#121c33;
-border-radius:20px;
-padding:20px;
-margin:16px 0;
-}
-
-.stats{display:flex;gap:12px;justify-content:center}
-.stat{text-align:center}
-.stat b{color:var(--accent);font-size:22px}
-
-button,.btn{
-border-radius:999px;
-padding:10px 14px;
-border:none;
-background:#222;
-color:white;
-font-weight:700;
-}
-
-.btn.primary{background:var(--accent);color:black}
-
-.tabs button{margin:4px}
-
+body{margin:0;font-family:-apple-system,Arial;background:#0b1220;color:#eaf2ff}
+.card{background:#121c33;border-radius:20px;padding:16px;margin:12px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.stat{background:#0f1830;padding:12px 18px;border-radius:16px;text-align:center}
+.stat b{font-size:22px;color:#00ffd5}
+button{padding:10px 14px;border-radius:20px;border:none;background:#00ffd5;color:#041018;font-weight:700}
+.tabs button{margin:4px;background:#121c33;color:white}
 .tab{display:none}
 .tab.active{display:block}
-
-.bottomNav{
-position:fixed;bottom:0;left:0;right:0;
-background:#0b1220;
-display:flex;
-gap:6px;
-padding:10px;
-}
-
-.bottomNav button{flex:1}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
-.grid img{width:100%;border-radius:12px}
-
-textarea,input{width:100%;padding:10px;border-radius:10px;background:#000;color:white;border:1px solid #333}
+input,textarea{width:100%;padding:10px;border-radius:10px;border:none;margin-top:6px}
+.feedItem{border-bottom:1px solid #222;padding:10px 0}
 </style>
 </head>
 
 <body>
 
-<main>
-
-<div class="hero">
-<h1>Jeremy Quick Ride</h1>
-<p class="small">Bristol Boys • John O’Groats → Land’s End • 2012</p>
+<div style="text-align:center;padding:20px">
+<h1 style="color:#00ffd5">Jeremy Quick Ride</h1>
+<p>Bristol Boys • John O’Groats → Land’s End • 2012</p>
 
 <div class="stats">
-<div class="stat"><b id="miles">960</b><div class="small">Miles</div></div>
-<div class="stat"><b>9</b><div class="small">Days</div></div>
-<div class="stat"><b>4</b><div class="small">Riders</div></div>
-<div class="stat"><b>2</b><div class="small">Support</div></div>
+<div class="stat"><b id="miles">0</b><div>Miles</div></div>
+<div class="stat"><b id="days">9</b><div>Days</div></div>
+<div class="stat"><b id="riders">4</b><div>Riders</div></div>
+<div class="stat"><b id="supporters">2</b><div>Supporters</div></div>
 </div>
 
+<div style="margin-top:10px">
+<button id="shareBtn">Share</button>
+</div>
 </div>
 
-<div class="tabs">
-<button onclick="showTab('home')">Home</button>
-<button onclick="showTab('days')">Days</button>
-<button onclick="showTab('photos')">Photos</button>
-<button onclick="showTab('feed')">Feed</button>
-<button onclick="showTab('settings')">Settings</button>
+<div class="tabs" style="text-align:center">
+<button data-tab="home">Home</button>
+<button data-tab="days">Days</button>
+<button data-tab="timeline">Timeline</button>
+<button data-tab="feed">Feed</button>
 </div>
 
-<div id="home" class="tab active">
-<div class="card">
-Nine mates. Nine days. Roughly 960 miles.<br><br>
+<div id="home" class="tab active card">
+Nine mates. Nine days. Roughly 960 miles.<br>
 No shortcuts. Nobody quit.
 </div>
-</div>
 
-<div id="days" class="tab">
-<div class="card">
-<ul>
-<li>Day 1 — John O’Groats → Inverness</li>
-<li>Day 2 — Inverness → Oban</li>
-<li>Day 3 — Oban → Arran</li>
-<li>Day 4 — Arran → Gretna</li>
-<li>Day 5 — Gretna → Preston</li>
-<li>Day 6 — Preston → Ludlow</li>
-<li>Day 7 — Ludlow → Bridgwater</li>
-<li>Day 8 — Bridgwater → Liskeard</li>
-<li>Day 9 — Liskeard → Land’s End</li>
-</ul>
-</div>
-</div>
+<div id="daysTab" class="tab card"></div>
 
-<div id="photos" class="tab">
-<div class="card">
-<div class="grid" id="photosGrid"></div>
-</div>
-</div>
+<div id="timelineTab" class="tab card"></div>
 
-<div id="feed" class="tab">
-<div class="card">
-<textarea id="postText" placeholder="Write memory…"></textarea>
-<br><br>
-<button class="btn primary" onclick="post()">Post</button>
-</div>
-
-<div class="card" id="feedList"></div>
-</div>
-
-<div id="settings" class="tab">
-<div class="card">
-Jeremy Quick Ride<br>
-Offline capable<br>
-Install via iPhone Share → Add to Home Screen
-</div>
-</div>
-
-</main>
-
-<div class="bottomNav">
-<button onclick="showTab('home')">Home</button>
-<button onclick="showTab('days')">Days</button>
-<button onclick="showTab('photos')">Photos</button>
-<button onclick="showTab('feed')">Feed</button>
-<button onclick="showTab('settings')">⚙️</button>
+<div id="feedTab" class="tab card">
+<textarea id="postText" placeholder="Write memory..."></textarea>
+<button id="postBtn">Post</button>
+<div id="feedList"></div>
 </div>
 
 <script>
-function showTab(id){
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-document.getElementById(id).classList.add('active');
+/* ===== DATA ===== */
+
+const APP={
+milesTotal:960,
+daysTotal:9,
+ridersTotal:4,
+supportersTotal:2,
+
+days:[
+"John O’Groats → Inverness",
+"Inverness → Oban",
+"Oban → Arran",
+"Arran → Gretna",
+"Gretna → Preston",
+"Preston → Ludlow",
+"Ludlow → Bridgwater",
+"Bridgwater → Liskeard",
+"Liskeard → Land’s End"
+],
+
+timeline:[
+"2011 Charity approved",
+"2012 Ride begins",
+"Hardest day Arran → Gretna",
+"Finish at Land’s End"
+],
+
+photos:[]
+};
+
+/* ===== COUNTERS ===== */
+
+function count(id,val){
+let n=0;const el=document.getElementById(id);
+const t=setInterval(()=>{
+n+=Math.ceil(val/40);
+if(n>=val){n=val;clearInterval(t)}
+el.textContent=n;
+},25);
 }
 
-const PHOTOS=[
-"photos/1.jpg",
-"photos/2.jpg",
-"photos/3.jpg"
-];
+count("miles",APP.milesTotal);
+count("days",APP.daysTotal);
+count("riders",APP.ridersTotal);
+count("supporters",APP.supportersTotal);
 
-document.getElementById("photosGrid").innerHTML =
-PHOTOS.map(p=>`<img src="${p}">`).join("");
+/* ===== TABS ===== */
 
-const FEED_KEY="jq_feed";
+document.querySelectorAll(".tabs button").forEach(b=>{
+b.onclick=()=>{
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(b.dataset.tab+"Tab")?.classList.add("active");
+document.getElementById(b.dataset.tab)?.classList.add("active");
+};
+});
 
-function loadFeed(){
-return JSON.parse(localStorage.getItem(FEED_KEY)||"[]");
-}
+/* ===== DAYS ===== */
 
-function saveFeed(f){
-localStorage.setItem(FEED_KEY,JSON.stringify(f));
-}
+const daysBox=document.getElementById("daysTab");
+daysBox.innerHTML=APP.days.map((d,i)=>`<div>Day ${i+1} — ${d}</div>`).join("");
 
-function render(){
+/* ===== TIMELINE ===== */
+
+document.getElementById("timelineTab").innerHTML=
+APP.timeline.map(t=>`<div>${t}</div>`).join("");
+
+/* ===== FEED ===== */
+
+const FEEDKEY="feed";
+
+function loadFeed(){return JSON.parse(localStorage.getItem(FEEDKEY)||"[]")}
+function saveFeed(f){localStorage.setItem(FEEDKEY,JSON.stringify(f))}
+
+function renderFeed(){
 const f=loadFeed();
 document.getElementById("feedList").innerHTML=
-f.map(x=>`<div style="margin-bottom:10px">${x}</div>`).join("");
+f.map(x=>`<div class="feedItem">${x}</div>`).join("");
 }
 
-function post(){
+document.getElementById("postBtn").onclick=()=>{
 const t=document.getElementById("postText").value.trim();
 if(!t)return;
 const f=loadFeed();
 f.unshift(t);
 saveFeed(f);
 document.getElementById("postText").value="";
-render();
-}
+renderFeed();
+};
 
-render();
+renderFeed();
+
+/* ===== SHARE ===== */
+
+document.getElementById("shareBtn").onclick=()=>{
+navigator.share?.({title:"Jeremy Quick Ride",url:location.href})||
+alert(location.href);
+};
 </script>
 
 </body>
